@@ -23,7 +23,7 @@ export default function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center"
+      className="relative min-h-[600px] md:min-h-[780px] lg:h-screen xl:min-h-[800px] 2xl:min-h-[820px] overflow-hidden bg-[#F4F6FB] flex flex-col justify-center"
     >
       {/* Top-edge gradient band */}
       <div
@@ -36,7 +36,8 @@ export default function Hero() {
 
       {/* Ambient spot — right */}
       <div
-        className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/4 -translate-y-1/4 rounded-full"
+        data-parallax="0.12"
+        className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
         style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
       />
       {/* Bottom fade into next section */}
@@ -47,38 +48,39 @@ export default function Hero() {
 
       {/* Ambient spot — left-bottom */}
       <div
-        className="pointer-events-none absolute left-0 bottom-0 h-[440px] w-[440px] -translate-x-1/3 translate-y-1/3 rounded-full"
+        data-parallax="0.08"
+        className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
         style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
       />
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-7 px-6 py-28 text-center md:py-36 lg:px-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:max-w-5xl lg:gap-7 lg:px-10 lg:py-32 xl:max-w-6xl xl:px-16 xl:py-40">
 
-        <h1 className="font-heading text-5xl font-bold leading-[1.05] tracking-tight text-[#0b0c12] md:text-6xl lg:text-7xl">
+        <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b0c12] sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl xl:text-8xl">
           <span className="hero-word block">Own the Rare.</span>
           <span className="hero-word block text-[#0f3f93]">
             Shape the Future.
           </span>
         </h1>
 
-        <p className="hero-sub max-w-xl text-base leading-relaxed text-[#0b0c12]/55 md:text-lg">
+        <p className="hero-sub max-w-sm text-sm leading-relaxed text-[#0b0c12]/55 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
           A fixed-supply, community-first token on Solana. No presale, no team
           allocation 100% public from the first trade.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">
           <Link
-            href="/docs"
-            className="hero-cta group inline-flex items-center gap-2 rounded-full  bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+            href="/join"
+            className="hero-cta group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
           >
-            Read White Paper
+            Join RARE Early
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/tokenomics"
+            href="/docs"
             className="hero-cta inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12"
           >
-            View Tokenomics
+            White Paper
           </Link>
         </div>
       </div>

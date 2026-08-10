@@ -73,11 +73,10 @@ export default function Nav() {
 
           {/* Desktop CTA */}
           <Link
-            href="https://x.com/TherealRarecoin"
-            target="_blank"
+            href="/join"
             className="hidden rounded-full bg-[#0b0c12] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] md:inline-flex"
           >
-            JOIN RARE
+            Join RARE
           </Link>
 
           {/* Mobile menu toggle */}
@@ -104,11 +103,10 @@ export default function Nav() {
               </Link>
             ))}
             <Link
-              href="https://x.com/TherealRarecoin"
-              target="_blank"
+              href="/join"
               className="mt-2 rounded-full bg-[#0b0c12] px-5 py-3 text-center text-sm font-semibold text-white"
             >
-              Buy RARE
+              Join RARE
             </Link>
           </div>
         </div>

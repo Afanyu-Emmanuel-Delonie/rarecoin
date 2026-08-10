@@ -3,26 +3,52 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, BarChart2 } from "lucide-react";
+import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// ── Ghost decorations — oversized, low-opacity background marks ────────────────
+function GhostCircles({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 256 256" fill="none" className={className}>
+      <path
+        d="M 64 128 C 99.346 128 128 156.654 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 Z M 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 156.654 156.654 128 192 128 Z M 64 0 C 99.346 0 128 28.654 128 64 C 128 99.346 99.346 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 Z M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 C 128 28.654 156.654 0 192 0 Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function GhostRings({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 256 256" fill="none" className={className}>
+      <path
+        d="M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 C 99.346 0 128 28.654 128 64 C 128 28.654 156.654 0 192 0 Z M 64 160 C 46.327 160 32 174.327 32 192 C 32 209.673 46.327 224 64 224 C 81.673 224 96 209.673 96 192 C 96 174.327 81.673 160 64 160 Z M 192 160 C 174.327 160 160 174.327 160 192 C 160 209.673 174.327 224 192 224 C 209.673 224 224 209.673 224 192 C 224 174.327 209.673 160 192 160 Z M 64 32 C 46.327 32 32 46.327 32 64 C 32 81.673 46.327 96 64 96 C 81.673 96 96 81.673 96 64 C 96 46.327 81.673 32 64 32 Z M 192 32 C 174.327 32 160 46.327 160 64 C 160 81.673 174.327 96 192 96 C 209.673 96 224 81.673 224 64 C 224 46.327 209.673 32 192 32 Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function GhostFlower({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 256 256" fill="none" className={className}>
+      <path
+        d="M 160 0 C 177.397 0 191.551 13.883 191.989 31.174 L 192.011 32.826 C 192.442 49.843 206.157 63.558 223.174 63.989 L 224.826 64.011 C 242.117 64.449 256 78.603 256 96 C 256 113.673 241.673 128 224 128 C 241.673 128 256 142.327 256 160 C 256 177.397 242.117 191.551 224.826 191.989 L 223.174 192.011 C 206.157 192.442 192.442 206.157 192.011 223.174 L 191.989 224.826 C 191.551 242.117 177.397 256 160 256 C 142.327 256 128 241.673 128 224 C 128 241.673 113.673 256 96 256 C 78.603 256 64.449 242.117 64.01 224.826 L 63.99 223.174 C 63.558 206.157 49.843 192.442 32.826 192.011 L 31.174 191.989 C 13.883 191.551 0 177.397 0 160 C 0 142.327 14.327 128 32 128 C 14.327 128 0 113.673 0 96 C 0 78.603 13.883 64.449 31.174 64.01 L 32.826 63.99 C 49.843 63.558 63.558 49.843 63.989 32.826 L 64.011 31.174 C 64.449 13.883 78.603 0 96 0 C 113.673 0 128 14.327 128 32 C 128 14.327 142.327 0 160 0 Z M 128 64 C 128 99.346 99.346 128 64 128 C 99.346 128 128 156.654 128 192 C 128 156.654 156.654 128 192 128 C 156.654 128 128 99.346 128 64 Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
 const values = [
   { icon: Lock,        title: "Scarcity",              desc: "A permanently fixed maximum supply of 1,000,000,000 RARE with no mechanism for additional minting." },
-  { icon: Zap,         title: "Fair Launch",            desc: "No presale, no team allocation. Every participant acquires RARE the same way — through the public bonding curve." },
+  { icon: Zap,         title: "Fair Launch",            desc: "No presale, no team allocation. Every participant acquires RARE the same way through the public bonding curve." },
   { icon: Eye,         title: "Transparency",           desc: "Public disclosure of backer wallets and regular reporting on creator fee usage and community activity." },
-  { icon: Users,       title: "Participation",          desc: "Utility is built around doing things — signaling, tipping, contributing — not just holding and waiting." },
+  { icon: Users,       title: "Participation",          desc: "Utility is built around doing things signaling, tipping, contributing not just holding and waiting." },
   { icon: Shield,      title: "Security",               desc: "Reliance on Proof's existing, audited launch infrastructure rather than bespoke smart contracts." },
   { icon: TrendingDown,title: "Sustainability",         desc: "A disclosed share of trading fees funds contributor rewards and buyback-and-burn activity." },
-];
-
-const team = [
-  { name: "Abdulla Usman", role: "Founder / CEO",      bio: "Crypto trading expert" },
-  { name: "Zeb Tufoin",    role: "Chief Technology Officer", bio: "IT expert" },
-  { name: "Ngeh Divine",   role: "Head of Product",    bio: "Product & ecosystem experience" },
-  { name: "Elvis Mimba",   role: "Community Lead",     bio: "Managed Tatcoin and Betchip" },
-  { name: "Julius N",      role: "Legal Advisor",      bio: "Blockchain advisor" },
-  { name: "Tantoh Terence",role: "Technical Advisor",  bio: "Seasoned trader" },
 ];
 
 export default function AboutPage() {
@@ -30,10 +56,12 @@ export default function AboutPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.fromTo(".about-hero",
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }
-      );
+      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      tl.fromTo(".about-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 });
+      tl.fromTo(".about-word", { opacity: 0, y: 40, skewY: 3 }, { opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.12 }, "-=0.2");
+      tl.fromTo(".about-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
+      tl.fromTo(".about-cta", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, "-=0.3");
+
       gsap.fromTo(".about-block",
         { opacity: 0, y: 36 },
         { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
@@ -54,56 +82,105 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div ref={pageRef} className="bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
-      {/* Hero */}
-      <div className="relative overflow-hidden bg-[#0b0c12] px-6 pt-40 pb-28 lg:px-16">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-72"
-          style={{ background: "linear-gradient(to bottom, rgba(51,85,255,0.1) 0%, transparent 100%)" }} />
-        <div className="about-hero mx-auto max-w-4xl flex flex-col gap-6 text-center">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">About Rarecoin</span>
-          <h1 className="font-heading text-5xl font-bold leading-tight text-white md:text-6xl">
-            Built on one principle.<br />Scarcity creates value.
+      {/* Hero — same structure & bg as the home hero */}
+      <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
+        {/* Top-edge gradient band */}
+        <div
+          className="pointer-events-none absolute inset-x-0 top-0 h-72"
+          style={{
+            background:
+              "linear-gradient(to bottom, rgba(15,63,147,0.08) 0%, rgba(15,63,147,0.03) 50%, transparent 100%)",
+          }}
+        />
+        {/* Ambient spot — right */}
+        <div
+          className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
+          style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
+        />
+        {/* Bottom fade into next section */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
+          style={{ background: "linear-gradient(to bottom, transparent 0%, #F4F6FB 100%)" }}
+        />
+        {/* Ambient spot — left-bottom */}
+        <div
+          className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
+          style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
+          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b0c12] sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
+            <span className="about-word block">Built on one principle.</span>
+            <span className="about-word block text-[#0f3f93]">Scarcity creates value.</span>
           </h1>
-          <p className="mx-auto max-w-2xl text-base leading-relaxed text-white/45">
-            But only a community can make that value mean something. Rarecoin is an attempt to answer honestly what a fair-launch community token can actually deliver — and to be transparent about what it cannot.
+
+          <p className="about-sub max-w-sm text-sm leading-relaxed text-[#0b0c12]/55 sm:max-w-xl lg:max-w-2xl">
+            An honest attempt at what a fair-launch community token can actually deliver and transparent about what it cannot.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-3">
+            <Link
+              href="/docs"
+              className="about-cta group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+            >
+              Read White Paper
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/join"
+              className="about-cta inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12"
+            >
+              Join Early
+            </Link>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Vision & Mission */}
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="about-block flex flex-col gap-5 rounded-3xl bg-white p-10">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/10">
+          <div className="about-block relative flex flex-col gap-5 overflow-hidden rounded-3xl bg-white p-10" data-scale>
+            <div className="pointer-events-none absolute -bottom-12 -right-12 h-56 w-56 text-[#3355ff] opacity-[0.06]">
+              <GhostCircles className="h-full w-full" />
+            </div>
+            <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/10">
               <Eye size={20} className="text-[#3355ff]" strokeWidth={1.75} />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="relative flex flex-col gap-2">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Vision</span>
               <h2 className="font-heading text-2xl font-bold text-[#0b0c12]">The most genuinely community-owned digital asset in its category.</h2>
             </div>
-            <p className="text-sm leading-relaxed text-[#0b0c12]/55">
-              A token whose culture, activity, and rewards are shaped by the people who hold it — launched with nothing hidden in the tokenomics.
+            <p className="relative text-sm leading-relaxed text-[#0b0c12]/55">
+              A token whose culture, activity, and rewards are shaped by the people who hold it launched with nothing hidden in the tokenomics.
             </p>
           </div>
-          <div className="about-block flex flex-col gap-5 rounded-3xl bg-[#0b0c12] p-10">
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/20">
+          <div className="about-block relative flex flex-col gap-5 overflow-hidden rounded-3xl bg-[#0b0c12] p-10" data-scale>
+            <div className="pointer-events-none absolute -bottom-12 -right-12 h-56 w-56 text-white opacity-[0.05]">
+              <GhostFlower className="h-full w-full" />
+            </div>
+            <div className="relative flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/20">
               <Target size={20} className="text-[#3355ff]" strokeWidth={1.75} />
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="relative flex flex-col gap-2">
               <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Mission</span>
               <h2 className="font-heading text-2xl font-bold text-white">Prove that a fair-launch token can deliver real, disclosed utility.</h2>
             </div>
-            <p className="text-sm leading-relaxed text-white/45">
-              Rewarding participation, contribution, and long-term holding through mechanisms that require no custom infrastructure — and being transparent, at every step, about what Rarecoin does and does not control.
+            <p className="relative text-sm leading-relaxed text-white/45">
+              Rewarding participation, contribution, and long-term holding through mechanisms that require no custom infrastructure and being transparent, at every step, about what Rarecoin does and does not control.
             </p>
           </div>
         </div>
       </div>
 
       {/* Core Values */}
-      <div className="bg-[#0b0c12] px-6 py-28 lg:px-16">
-        <div className="mx-auto max-w-7xl flex flex-col gap-16">
+      <div className="relative overflow-hidden bg-[#0b0c12] px-6 py-28 lg:px-16">
+        <div className="pointer-events-none absolute -top-20 -right-20 h-96 w-96 text-[#3355ff] opacity-[0.05]">
+          <GhostRings className="h-full w-full" />
+        </div>
+        <div className="relative mx-auto max-w-7xl flex flex-col gap-16">
           <div className="flex flex-col gap-3">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Core Values</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">What we stand for.</h2>
@@ -124,29 +201,53 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team */}
+      {/* Why RARE */}
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Team</span>
-            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">The people behind RARE.</h2>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Why RARE</span>
+            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">Three reasons this is different.</h2>
           </div>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {team.map(({ name, role, bio }) => (
-              <div key={name} className="about-member flex flex-col gap-4 rounded-2xl border border-[#0b0c12]/8 bg-white p-7">
-                {/* Avatar placeholder */}
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#3355ff]/10">
-                  <span className="font-heading text-lg font-bold text-[#3355ff]">
-                    {name.charAt(0)}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <h3 className="font-heading text-base font-bold text-[#0b0c12]">{name}</h3>
-                  <span className="text-xs font-semibold text-[#3355ff]">{role}</span>
-                </div>
-                <p className="text-sm text-[#0b0c12]/50">{bio}</p>
+
+          <div className="flex flex-col divide-y divide-[#0b0c12]/8">
+            {[
+              {
+                num: "01",
+                title: "Nothing was held back.",
+                desc: "No team tranche. No presale. No vesting cliff. Every single RARE token enters circulation the same way through the public bonding curve. There is no insider advantage baked into the supply.",
+              },
+              {
+                num: "02",
+                title: "The supply is permanently fixed.",
+                desc: "One billion RARE. Hard cap. No minting function exists. No governance vote can change it. Scarcity is not a promise it is a technical constraint written into the token at launch.",
+              },
+              {
+                num: "03",
+                title: "Utility is built around doing, not holding.",
+                desc: "Signaling, tipping, contributing, earning RARE rewards participation. Long-term holders gain recognition through verifiable on-chain history, not a staking contract that locks your tokens away.",
+              },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="about-member grid grid-cols-[auto_1fr] gap-8 py-12 md:grid-cols-[80px_1fr_1.2fr] md:gap-16 md:items-center">
+                <span className="font-heading text-sm font-bold text-[#0b0c12]/20">{num}</span>
+                <h3 className="font-heading text-2xl font-bold text-[#0b0c12] md:text-3xl">{title}</h3>
+                <p className="col-span-2 text-sm leading-relaxed text-[#0b0c12]/50 md:col-span-1">{desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* CTA strip */}
+          <div className="flex flex-col gap-4 rounded-3xl bg-[#0b0c12] p-10 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-1">
+              <h3 className="font-heading text-xl font-bold text-white">Ready to be part of it?</h3>
+              <p className="text-sm text-white/40">Get notified the moment RARE goes live.</p>
+            </div>
+            <Link
+              href="/join"
+              className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0f3f93] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-[#0b0c12] hover:gap-3"
+            >
+              Join Early
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>

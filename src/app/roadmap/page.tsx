@@ -1,15 +1,28 @@
+import type { Metadata } from "next";
 import Roadmap from "@/components/roadmap";
+import PageHero from "@/components/page-hero";
+import CtaSection from "@/components/cta-section";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
+
+export const metadata: Metadata = {
+  title: "Roadmap",
+  description:
+    "Rarecoin's five-phase roadmap from fair launch on Proof through Solana DEX graduation, utility rollout, and long-term community growth.",
+  alternates: { canonical: "/roadmap" },
+};
 
 export default function RoadmapPage() {
   return (
-    <div className="pt-20 bg-[#F4F6FB]">
-      <div className="bg-[#0b0c12] px-6 pt-28 pb-16 lg:px-16">
-        <div className="mx-auto max-w-7xl">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Roadmap</span>
-          <h1 className="mt-3 font-heading text-5xl font-bold text-white md:text-6xl">Five phases.<br />One direction.</h1>
-        </div>
-      </div>
+    <div className="bg-[#F4F6FB]">
+      <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Roadmap", path: "/roadmap" }]} />
+      <PageHero
+        eyebrow="Roadmap"
+        title="Five phases.<br/>One direction."
+        sub="Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee."
+        dark={false}
+      />
       <Roadmap />
+      <CtaSection />
     </div>
   );
 }
