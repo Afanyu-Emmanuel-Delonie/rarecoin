@@ -7,49 +7,13 @@ import { Radio, Send, Layers, Gift, Star, ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Ghost decorations — oversized, low-opacity background marks ────────────────
-function GhostCircles({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 256 256" fill="none" className={className}>
-      <path
-        d="M 64 128 C 99.346 128 128 156.654 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 Z M 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 156.654 156.654 128 192 128 Z M 64 0 C 99.346 0 128 28.654 128 64 C 128 99.346 99.346 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 Z M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 156.654 128 128 99.346 128 64 C 128 28.654 156.654 0 192 0 Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function GhostRings({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 256 256" fill="none" className={className}>
-      <path
-        d="M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 C 99.346 0 128 28.654 128 64 C 128 28.654 156.654 0 192 0 Z M 64 160 C 46.327 160 32 174.327 32 192 C 32 209.673 46.327 224 64 224 C 81.673 224 96 209.673 96 192 C 96 174.327 81.673 160 64 160 Z M 192 160 C 174.327 160 160 174.327 160 192 C 160 209.673 174.327 224 192 224 C 209.673 224 224 209.673 224 192 C 224 174.327 209.673 160 192 160 Z M 64 32 C 46.327 32 32 46.327 32 64 C 32 81.673 46.327 96 64 96 C 81.673 96 96 81.673 96 64 C 96 46.327 81.673 32 64 32 Z M 192 32 C 174.327 32 160 46.327 160 64 C 160 81.673 174.327 96 192 96 C 209.673 96 224 81.673 224 64 C 224 46.327 209.673 32 192 32 Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-function GhostFlower({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 256 256" fill="none" className={className}>
-      <path
-        d="M 160 0 C 177.397 0 191.551 13.883 191.989 31.174 L 192.011 32.826 C 192.442 49.843 206.157 63.558 223.174 63.989 L 224.826 64.011 C 242.117 64.449 256 78.603 256 96 C 256 113.673 241.673 128 224 128 C 241.673 128 256 142.327 256 160 C 256 177.397 242.117 191.551 224.826 191.989 L 223.174 192.011 C 206.157 192.442 192.442 206.157 192.011 223.174 L 191.989 224.826 C 191.551 242.117 177.397 256 160 256 C 142.327 256 128 241.673 128 224 C 128 241.673 113.673 256 96 256 C 78.603 256 64.449 242.117 64.01 224.826 L 63.99 223.174 C 63.558 206.157 49.843 192.442 32.826 192.011 L 31.174 191.989 C 13.883 191.551 0 177.397 0 160 C 0 142.327 14.327 128 32 128 C 14.327 128 0 113.673 0 96 C 0 78.603 13.883 64.449 31.174 64.01 L 32.826 63.99 C 49.843 63.558 63.558 49.843 63.989 32.826 L 64.011 31.174 C 64.449 13.883 78.603 0 96 0 C 113.673 0 128 14.327 128 32 C 128 14.327 142.327 0 160 0 Z M 128 64 C 128 99.346 99.346 128 64 128 C 99.346 128 128 156.654 128 192 C 128 156.654 156.654 128 192 128 C 156.654 128 128 99.346 128 64 Z"
-        fill="currentColor"
-      />
-    </svg>
-  );
-}
-
-const GHOSTS = [GhostCircles, GhostRings, GhostFlower];
-
 const utilities = [
   {
     number: "01",
     icon: Radio,
     title: "Community Signaling",
     description:
-      "Hold RARE to participate in non-binding polls contributor nominations, event priorities, how trading fees get used.",
+      "Hold RARE to participate in non-binding polls — contributor nominations, event priorities, how trading fees get used.",
   },
   {
     number: "02",
@@ -77,7 +41,7 @@ const utilities = [
     icon: Star,
     title: "Holder Recognition",
     description:
-      "Long-term holders earn verifiable OG status based on public wallet history no staking contract required.",
+      "Long-term holders earn verifiable OG status based on public wallet history —no staking contract required.",
   },
 ];
 
@@ -141,7 +105,7 @@ export default function Utility() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-[#0b0c12]/50 md:text-right">
-            Every utility case works without a custom smart contract available from day one or shortly after launch.
+            Every utility case works without a custom smart contract — available from day one or shortly after launch.
           </p>
         </div>
 
@@ -149,7 +113,6 @@ export default function Utility() {
         <div ref={pinRef} className="hidden md:flex md:h-[480px] md:gap-3">
           {utilities.map(({ number, icon: Icon, title, description }, i) => {
             const isActive = i === active;
-            const Ghost = GHOSTS[i % GHOSTS.length];
             return (
               <div
                 key={number}
@@ -159,22 +122,13 @@ export default function Utility() {
                     : "flex-1 bg-white border border-[#0b0c12]/8"
                 }`}
               >
-                {/* Ghost pattern */}
-                <div
-                  className={`pointer-events-none absolute -bottom-10 -right-10 h-56 w-56 transition-opacity duration-500 ${
-                    isActive ? "text-white opacity-[0.05]" : "text-[#3355ff] opacity-[0.06]"
-                  }`}
-                >
-                  <Ghost className="h-full w-full" />
-                </div>
-
                 {/* Collapsed content */}
                 <div
                   className={`absolute inset-0 flex flex-col items-center justify-between p-6 transition-opacity duration-300 ${
                     isActive ? "pointer-events-none opacity-0" : "opacity-100"
                   }`}
                 >
-                  <span className="font-heading text-2xl font-bold text-[#0b0c12]/30">
+                  <span className="font-heading text-xs font-bold text-[#0b0c12]/30">
                     {number}
                   </span>
                   <span className="[writing-mode:vertical-rl] rotate-180 whitespace-nowrap font-heading text-sm font-semibold text-[#0b0c12]/60">
@@ -192,7 +146,7 @@ export default function Utility() {
                   }`}
                 >
                   <div className="flex items-center justify-between">
-                    <span className="font-heading text-2xl font-bold text-white/80">
+                    <span className="font-heading text-xs font-bold text-white/40">
                       {number}
                     </span>
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/10 text-[#7ea1ff]">

@@ -35,28 +35,61 @@ const faqs = [
   },
 ];
 
+// ── Ghost decoration — oversized, low-opacity background mark ──────────────────
+function GhostRings({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 256 256" fill="none" className={className}>
+      <path
+        d="M 192 0 C 227.346 0 256 28.654 256 64 C 256 99.346 227.346 128 192 128 C 227.346 128 256 156.654 256 192 C 256 227.346 227.346 256 192 256 C 156.654 256 128 227.346 128 192 C 128 227.346 99.346 256 64 256 C 28.654 256 0 227.346 0 192 C 0 156.654 28.654 128 64 128 C 28.654 128 0 99.346 0 64 C 0 28.654 28.654 0 64 0 C 99.346 0 128 28.654 128 64 C 128 28.654 156.654 0 192 0 Z M 64 160 C 46.327 160 32 174.327 32 192 C 32 209.673 46.327 224 64 224 C 81.673 224 96 209.673 96 192 C 96 174.327 81.673 160 64 160 Z M 192 160 C 174.327 160 160 174.327 160 192 C 160 209.673 174.327 224 192 224 C 209.673 224 224 209.673 224 192 C 224 174.327 209.673 160 192 160 Z M 64 32 C 46.327 32 32 46.327 32 64 C 32 81.673 46.327 96 64 96 C 81.673 96 96 81.673 96 64 C 96 46.327 81.673 32 64 32 Z M 192 32 C 174.327 32 160 46.327 160 64 C 160 81.673 174.327 96 192 96 C 209.673 96 224 81.673 224 64 C 224 46.327 209.673 32 192 32 Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
+  return (
+    <div className="border-b border-[#0b0c12]/8">
+      <button
+        onClick={onToggle}
+        className="group flex w-full items-center justify-between gap-6 py-6 text-left"
+      >
+        <span className="font-heading text-base font-semibold text-[#0b0c12] group-hover:text-[#3355ff] transition-colors">
+          {q}
+        </span>
+        {isOpen
+          ? <Minus size={16} className="shrink-0 text-[#3355ff]" />
+          : <Plus size={16} className="shrink-0 text-[#0b0c12]/30 group-hover:text-[#3355ff] transition-colors" />
+        }
+      </button>
+      <div className={`overflow-hidden transition-all duration-400 ease-in-out ${isOpen ? "max-h-64 pb-6" : "max-h-0"}`}>
+        <p className="text-sm leading-relaxed text-[#0b0c12]/55">{a}</p>
+      </div>
+    </div>
+  );
+}
+
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
+  const mid = Math.ceil(faqs.length / 2);
+  const columns = [faqs.slice(0, mid), faqs.slice(mid)];
 
   return (
-    <div className="flex flex-col gap-0 divide-y divide-[#0b0c12]/8">
-      {faqs.map(({ q, a }, i) => (
-        <div key={i}>
-          <button
-            onClick={() => setOpen(open === i ? null : i)}
-            className="group flex w-full items-center justify-between gap-6 py-6 text-left"
-          >
-            <span className="font-heading text-base font-semibold text-[#0b0c12] group-hover:text-[#3355ff] transition-colors">
-              {q}
-            </span>
-            {open === i
-              ? <Minus size={16} className="shrink-0 text-[#3355ff]" />
-              : <Plus size={16} className="shrink-0 text-[#0b0c12]/30 group-hover:text-[#3355ff] transition-colors" />
-            }
-          </button>
-          <div className={`overflow-hidden transition-all duration-400 ease-in-out ${open === i ? "max-h-48 pb-6" : "max-h-0"}`}>
-            <p className="text-sm leading-relaxed text-[#0b0c12]/55">{a}</p>
-          </div>
+    <div className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
+      {columns.map((col, colIdx) => (
+        <div key={colIdx} className="flex flex-col">
+          {col.map(({ q, a }, i) => {
+            const index = colIdx * mid + i;
+            return (
+              <FAQItem
+                key={q}
+                q={q}
+                a={a}
+                isOpen={open === index}
+                onToggle={() => setOpen(open === index ? null : index)}
+              />
+            );
+          })}
         </div>
       ))}
     </div>
@@ -81,68 +114,15 @@ export default function CtaSection() {
     <section ref={sectionRef} className="bg-[#F4F6FB] px-6 py-28 lg:px-16">
       <div className="mx-auto max-w-7xl flex flex-col gap-24">
 
-        {/* FAQ + Contact grid */}
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:gap-24">
-
-          {/* FAQ */}
-          <div className="ctas-item flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">FAQ</span>
-              <h2 className="font-heading text-3xl font-bold text-[#0b0c12] md:text-4xl">
-                Common questions,<br />straight answers.
-              </h2>
-            </div>
-            <FAQ />
+        {/* FAQ */}
+        <div className="ctas-item flex flex-col gap-10">
+          <div className="flex flex-col gap-3">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">FAQ</span>
+            <h2 className="font-heading text-3xl font-bold text-[#0b0c12] md:text-4xl">
+              Common questions,<br />straight answers.
+            </h2>
           </div>
-
-          {/* Contact */}
-          <div className="ctas-item flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Contact</span>
-              <h2 className="font-heading text-3xl font-bold text-[#0b0c12] md:text-4xl">
-                Get in touch<br />with the team.
-              </h2>
-              <p className="text-sm leading-relaxed text-[#0b0c12]/50">
-                For partnership enquiries, press, or general questions — reach us directly. Community support is best handled in our public channels.
-              </p>
-            </div>
-
-            <form className="flex flex-col gap-4" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold text-[#0b0c12]/50 uppercase tracking-wider">Name</label>
-                  <input
-                    type="text"
-                    placeholder="Your name"
-                    className="rounded-xl border border-[#0b0c12]/12 bg-white px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/50 focus:ring-2 focus:ring-[#3355ff]/10 transition-all"
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold text-[#0b0c12]/50 uppercase tracking-wider">Email</label>
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="rounded-xl border border-[#0b0c12]/12 bg-white px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/50 focus:ring-2 focus:ring-[#3355ff]/10 transition-all"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold text-[#0b0c12]/50 uppercase tracking-wider">Message</label>
-                <textarea
-                  rows={5}
-                  placeholder="What's on your mind?"
-                  className="rounded-xl border border-[#0b0c12]/12 bg-white px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/50 focus:ring-2 focus:ring-[#3355ff]/10 transition-all resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#3355ff] hover:gap-3"
-              >
-                Send Message
-                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-              </button>
-            </form>
-          </div>
+          <FAQ />
         </div>
 
         {/* CTA banner */}
@@ -152,6 +132,9 @@ export default function CtaSection() {
             style={{ background: "radial-gradient(circle, rgba(51,85,255,0.18) 0%, transparent 70%)" }} />
           <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 translate-x-1/2 translate-y-1/2 rounded-full"
             style={{ background: "radial-gradient(circle, rgba(123,63,228,0.15) 0%, transparent 70%)" }} />
+          <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 text-white opacity-[0.04]">
+            <GhostRings className="h-full w-full" />
+          </div>
 
           <div className="relative z-10 flex flex-col items-center gap-7">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
@@ -165,18 +148,17 @@ export default function CtaSection() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href="/docs"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#3355ff] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#2244ee] hover:gap-3"
+                href="/join"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
               >
-                Read White Paper
+                Join RARE Early
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
-                href="https://x.com/TherealRarecoin"
-                target="_blank"
+                href="/docs"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-7 py-3.5 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/12"
               >
-                Follow on X
+                White Paper
               </Link>
             </div>
           </div>

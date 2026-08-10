@@ -123,7 +123,7 @@ export default function Community() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/40 md:text-right">
-            Rarecoin has no marketing budget carved out at launch. Growth comes from the people who show up and they get rewarded for it.
+            Rarecoin has no marketing budget carved out at launch. Growth comes from the people who show up — and they get rewarded for it.
           </p>
         </div>
 
@@ -194,7 +194,7 @@ export default function Community() {
               Contribute. Get recognized. Earn RARE.
             </h3>
             <p className="text-sm leading-relaxed text-white/45">
-              The most active and constructive community members are formally recognized and compensated in RARE funded by a disclosed share of real trading fees, not a pre-minted pool.
+              The most active and constructive community members are formally recognized and compensated in RARE — funded by a disclosed share of real trading fees, not a pre-minted pool.
             </p>
           </div>
 

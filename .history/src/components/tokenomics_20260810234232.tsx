@@ -133,7 +133,7 @@ export default function Tokenomics() {
               </h2>
             </div>
             <p className="max-w-sm text-sm leading-relaxed text-white/40 md:text-right">
-              No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way through the public bonding curve.
+              No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way — through the public bonding curve.
             </p>
           </div>
 

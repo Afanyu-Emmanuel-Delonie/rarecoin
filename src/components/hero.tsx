@@ -36,6 +36,7 @@ export default function Hero() {
 
       {/* Ambient spot — right */}
       <div
+        data-parallax="0.12"
         className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/4 -translate-y-1/4 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
       />
@@ -47,6 +48,7 @@ export default function Hero() {
 
       {/* Ambient spot — left-bottom */}
       <div
+        data-parallax="0.08"
         className="pointer-events-none absolute left-0 bottom-0 h-[440px] w-[440px] -translate-x-1/3 translate-y-1/3 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
       />
@@ -68,17 +70,17 @@ export default function Hero() {
 
         <div className="flex flex-wrap justify-center gap-3">
           <Link
-            href="/docs"
-            className="hero-cta group inline-flex items-center gap-2 rounded-full  bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+            href="/join"
+            className="hero-cta group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
           >
-            Read White Paper
+            Join RARE Early
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href="/tokenomics"
+            href="/docs"
             className="hero-cta inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12"
           >
-            View Tokenomics
+            White Paper
           </Link>
         </div>
       </div>

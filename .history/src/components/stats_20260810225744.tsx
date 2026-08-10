@@ -41,14 +41,14 @@ export default function Stats() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center md:gap-16">
 
           {/* Left — text */}
-          <div className="flex flex-col gap-6" data-slide-left>
+          <div className="flex flex-col gap-6">
             <h2 className="font-heading text-3xl font-bold leading-tight text-[#0b0c12] md:text-5xl">
-              Built for transparency.
+              Built for transparency.<br />Not promises.
             </h2>
 
             <div className="flex flex-col gap-3">
               <p className="text-base leading-relaxed text-[#0b0c12]/55">
-                Rarecoin puts every allocation, every wallet, and every trade on-chain verifiable by anyone, hidden from no one.
+                Rarecoin puts every allocation, every wallet, and every trade on-chain — verifiable by anyone, hidden from no one.
               </p>
               <p className="text-base leading-relaxed text-[#0b0c12]/55">
                 No presale, no team cut, no vesting cliffs. Just a public bonding curve, open from the first block.
@@ -65,7 +65,7 @@ export default function Stats() {
           </div>
 
           {/* Right — status badge + 2x2 stat grid */}
-          <div className="flex flex-col gap-3" data-slide-right>
+          <div className="flex flex-col gap-3">
             <div className="stat-badge flex items-center gap-2 rounded-2xl border border-[#0b0c12]/8 bg-white px-5 py-4">
               <span className="h-1.5 w-1.5 rounded-full bg-[#0f3f93]" />
               <span className="text-sm font-medium text-[#0b0c12]/60">Rarecoin protocol stats</span>

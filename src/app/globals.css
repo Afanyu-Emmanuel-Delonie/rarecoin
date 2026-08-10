@@ -19,7 +19,7 @@
   --color-rare-accent: var(--rare-accent);
   --color-rare-ink: var(--rare-ink);
   --font-sans: var(--font-inter);
-  --font-heading: var(--font-space-grotesk);
+  --font-heading: var(--font-syne);
 }
 
 body {
