@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import BreadcrumbSchema from "@/components/breadcrumb-schema";
+
+export const metadata: Metadata = {
+  title: "White Paper",
+  description:
+    "The Rarecoin (RARE) white paper: fair launch mechanics on Proof, fixed 1,000,000,000 RARE supply, burn model, signal-based governance, and full tokenomics.",
+  alternates: { canonical: "/docs" },
+};
 
 const sections = [
   { num: "01", title: "Executive Summary",              anchor: "executive-summary" },
@@ -42,6 +51,7 @@ const glossary = [
 export default function DocsPage() {
   return (
     <div className="bg-[#F4F6FB] pt-20">
+      <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "White Paper", path: "/docs" }]} />
       <div className="bg-[#0b0c12] px-6 pt-28 pb-16 lg:px-16">
         <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-3">

@@ -115,9 +115,6 @@ export default function Community() {
         {/* Heading */}
         <div className="comm-heading flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
-              Community
-            </span>
             <h2 className="font-heading text-4xl font-bold leading-tight text-white md:text-5xl">
               The community<br />is the product.
             </h2>

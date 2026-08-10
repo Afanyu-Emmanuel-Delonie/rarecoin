@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
+  { q: "Is Rarecoin (RARE) the same as the $RARECOIN token on Solana (rarecoinonsol.xyz)?", a: "No. There is a separate, unaffiliated project also using the name $RARECOIN on Solana. It is not connected to us in any way — different team, different contract, different launch. Always verify the official contract address through our channels (@TherealRarecoin) before transacting, and don't assume two projects with similar names are related." },
+  { q: "Is Rarecoin related to SuperRare's RARE governance token?", a: "No. SuperRare's RARE is an established governance token for the SuperRare NFT platform, listed on major exchanges. Rarecoin is an independent, unrelated fair-launch project on Solana. We have no affiliation, partnership, or shared team with SuperRare." },
   { q: "Is there a presale or team allocation?", a: "No. Every RARE token enters circulation through the public bonding curve on Proof. There is no presale, no private round, and no team tranche set aside before launch." },
   { q: "What blockchain is Rarecoin on?", a: "Rarecoin launches on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure." },
   { q: "How does the burn mechanism work?", a: "A disclosed share of the trading fees earned by the creator wallet on Proof is used to buy back RARE on the open market and send it to a verifiable burn address. Burn events are announced in advance." },
@@ -16,11 +18,25 @@ const faqs = [
   { q: "How do I verify the official contract address?", a: "Always check an authoritative Rarecoin channel — our official X account (@TherealRarecoin) or website — before every transaction. Never trust contract addresses shared in DMs or unofficial groups." },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+
 export default function FaqPage() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
     <div className="bg-[#F4F6FB] pt-20">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="bg-[#0b0c12] px-6 pt-28 pb-16 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">FAQ</span>

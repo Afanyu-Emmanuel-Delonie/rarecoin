@@ -44,26 +44,11 @@ function GhostFlower({ className }: { className?: string }) {
 
 const values = [
   { icon: Lock,        title: "Scarcity",              desc: "A permanently fixed maximum supply of 1,000,000,000 RARE with no mechanism for additional minting." },
-  { icon: Zap,         title: "Fair Launch",            desc: "No presale, no team allocation. Every participant acquires RARE the same way — through the public bonding curve." },
+  { icon: Zap,         title: "Fair Launch",            desc: "No presale, no team allocation. Every participant acquires RARE the same way through the public bonding curve." },
   { icon: Eye,         title: "Transparency",           desc: "Public disclosure of backer wallets and regular reporting on creator fee usage and community activity." },
-  { icon: Users,       title: "Participation",          desc: "Utility is built around doing things — signaling, tipping, contributing — not just holding and waiting." },
+  { icon: Users,       title: "Participation",          desc: "Utility is built around doing things signaling, tipping, contributing not just holding and waiting." },
   { icon: Shield,      title: "Security",               desc: "Reliance on Proof's existing, audited launch infrastructure rather than bespoke smart contracts." },
   { icon: TrendingDown,title: "Sustainability",         desc: "A disclosed share of trading fees funds contributor rewards and buyback-and-burn activity." },
-];
-
-const AVATAR_GRADIENTS = [
-  "linear-gradient(160deg, #0f3f93 0%, #0b0c12 100%)",
-  "linear-gradient(160deg, #3355ff 0%, #0b0c12 100%)",
-  "linear-gradient(160deg, #7b3fe4 0%, #0b0c12 100%)",
-];
-
-const team = [
-  { name: "Abdulla Usman",  role: "Founder / CEO",             bio: "Crypto trading expert" },
-  { name: "Zeb Tufoin",     role: "Chief Technology Officer",  bio: "IT expert" },
-  { name: "Ngeh Divine",    role: "Head of Product",           bio: "Product & ecosystem experience" },
-  { name: "Elvis Mimba",    role: "Community Lead",            bio: "Managed Tatcoin and Betchip" },
-  { name: "Julius N",       role: "Legal Advisor",             bio: "Blockchain advisor" },
-  { name: "Tantoh Terence", role: "Technical Advisor",         bio: "Seasoned trader" },
 ];
 
 export default function AboutPage() {
@@ -111,7 +96,7 @@ export default function AboutPage() {
         />
         {/* Ambient spot — right */}
         <div
-          className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] translate-x-1/4 -translate-y-1/4 rounded-full"
+          className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
           style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
         />
         {/* Bottom fade into next section */}
@@ -121,23 +106,19 @@ export default function AboutPage() {
         />
         {/* Ambient spot — left-bottom */}
         <div
-          className="pointer-events-none absolute left-0 bottom-0 h-[440px] w-[440px] -translate-x-1/3 translate-y-1/3 rounded-full"
+          className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
           style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
         />
 
         {/* Content */}
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-7 px-6 py-28 text-center md:py-36 lg:px-16">
-          <span className="about-eyebrow text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
-            About Rarecoin
-          </span>
-
-          <h1 className="font-heading text-5xl font-bold leading-[1.05] tracking-tight text-[#0b0c12] md:text-6xl lg:text-7xl">
+        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
+          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b0c12] sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
             <span className="about-word block">Built on one principle.</span>
             <span className="about-word block text-[#0f3f93]">Scarcity creates value.</span>
           </h1>
 
-          <p className="about-sub max-w-xl text-sm leading-relaxed text-[#0b0c12]/55">
-            An honest attempt at what a fair-launch community token can actually deliver — and transparent about what it cannot.
+          <p className="about-sub max-w-sm text-sm leading-relaxed text-[#0b0c12]/55 sm:max-w-xl lg:max-w-2xl">
+            An honest attempt at what a fair-launch community token can actually deliver and transparent about what it cannot.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
@@ -149,10 +130,10 @@ export default function AboutPage() {
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
-              href="#team"
+              href="/join"
               className="about-cta inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12"
             >
-              Meet the Team
+              Join Early
             </Link>
           </div>
         </div>
@@ -173,7 +154,7 @@ export default function AboutPage() {
               <h2 className="font-heading text-2xl font-bold text-[#0b0c12]">The most genuinely community-owned digital asset in its category.</h2>
             </div>
             <p className="relative text-sm leading-relaxed text-[#0b0c12]/55">
-              A token whose culture, activity, and rewards are shaped by the people who hold it — launched with nothing hidden in the tokenomics.
+              A token whose culture, activity, and rewards are shaped by the people who hold it launched with nothing hidden in the tokenomics.
             </p>
           </div>
           <div className="about-block relative flex flex-col gap-5 overflow-hidden rounded-3xl bg-[#0b0c12] p-10" data-scale>
@@ -188,7 +169,7 @@ export default function AboutPage() {
               <h2 className="font-heading text-2xl font-bold text-white">Prove that a fair-launch token can deliver real, disclosed utility.</h2>
             </div>
             <p className="relative text-sm leading-relaxed text-white/45">
-              Rewarding participation, contribution, and long-term holding through mechanisms that require no custom infrastructure — and being transparent, at every step, about what Rarecoin does and does not control.
+              Rewarding participation, contribution, and long-term holding through mechanisms that require no custom infrastructure and being transparent, at every step, about what Rarecoin does and does not control.
             </p>
           </div>
         </div>
@@ -220,44 +201,53 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team */}
-      <div id="team" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-28 lg:px-16">
+      {/* Why RARE */}
+      <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Team</span>
-            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">The people behind RARE.</h2>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Why RARE</span>
+            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">Three reasons this is different.</h2>
           </div>
-          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3" data-stagger>
-            {team.map(({ name, role, bio }, i) => (
-              <div key={name} className="about-member group relative overflow-hidden rounded-3xl bg-[#0b0c12]" style={{ aspectRatio: "3/4" }}>
-                {/* Avatar placeholder — no photo asset yet */}
-                <div
-                  className="absolute inset-0 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-105"
-                  style={{ background: AVATAR_GRADIENTS[i % AVATAR_GRADIENTS.length] }}
-                >
-                  <span className="font-heading text-7xl font-bold text-white/15">
-                    {name.charAt(0)}
-                  </span>
-                </div>
 
-                {/* Cinematic gradient overlay */}
-                <div
-                  className="absolute inset-0"
-                  style={{ background: "linear-gradient(to bottom, transparent 35%, rgba(11,12,18,0.55) 60%, rgba(11,12,18,0.95) 100%)" }}
-                />
-
-                {/* Top-left role badge */}
-                <span className="absolute top-5 left-5 rounded-full bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-white backdrop-blur-sm">
-                  {role}
-                </span>
-
-                {/* Bottom text */}
-                <div className="absolute bottom-0 inset-x-0 flex flex-col gap-1 p-6">
-                  <h3 className="font-heading text-xl font-bold text-white">{name}</h3>
-                  <p className="text-sm text-white/50">{bio}</p>
-                </div>
+          <div className="flex flex-col divide-y divide-[#0b0c12]/8">
+            {[
+              {
+                num: "01",
+                title: "Nothing was held back.",
+                desc: "No team tranche. No presale. No vesting cliff. Every single RARE token enters circulation the same way through the public bonding curve. There is no insider advantage baked into the supply.",
+              },
+              {
+                num: "02",
+                title: "The supply is permanently fixed.",
+                desc: "One billion RARE. Hard cap. No minting function exists. No governance vote can change it. Scarcity is not a promise it is a technical constraint written into the token at launch.",
+              },
+              {
+                num: "03",
+                title: "Utility is built around doing, not holding.",
+                desc: "Signaling, tipping, contributing, earning RARE rewards participation. Long-term holders gain recognition through verifiable on-chain history, not a staking contract that locks your tokens away.",
+              },
+            ].map(({ num, title, desc }) => (
+              <div key={num} className="about-member grid grid-cols-[auto_1fr] gap-8 py-12 md:grid-cols-[80px_1fr_1.2fr] md:gap-16 md:items-center">
+                <span className="font-heading text-sm font-bold text-[#0b0c12]/20">{num}</span>
+                <h3 className="font-heading text-2xl font-bold text-[#0b0c12] md:text-3xl">{title}</h3>
+                <p className="col-span-2 text-sm leading-relaxed text-[#0b0c12]/50 md:col-span-1">{desc}</p>
               </div>
             ))}
+          </div>
+
+          {/* CTA strip */}
+          <div className="flex flex-col gap-4 rounded-3xl bg-[#0b0c12] p-10 md:flex-row md:items-center md:justify-between">
+            <div className="flex flex-col gap-1">
+              <h3 className="font-heading text-xl font-bold text-white">Ready to be part of it?</h3>
+              <p className="text-sm text-white/40">Get notified the moment RARE goes live.</p>
+            </div>
+            <Link
+              href="/join"
+              className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0f3f93] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-[#0b0c12] hover:gap-3"
+            >
+              Join Early
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </div>
         </div>
       </div>

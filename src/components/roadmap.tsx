@@ -128,9 +128,6 @@ export default function Roadmap() {
         {/* Heading */}
         <div className="road-heading flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
-              Roadmap
-            </span>
             <h2 className="font-heading text-4xl font-bold leading-tight text-[#0b0c12] md:text-5xl">
               Five phases.<br />One direction.
             </h2>

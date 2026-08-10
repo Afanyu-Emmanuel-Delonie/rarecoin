@@ -31,12 +31,6 @@ export default function JoinPage() {
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-24">
         <div className="w-full max-w-md flex flex-col gap-10">
 
-          {/* Logo back link */}
-          <Link href="/" className="flex items-center gap-2 self-start">
-            <img src="/rarecoin.svg" alt="Rarecoin" className="h-7 w-auto" />
-            <span className="font-heading text-base font-bold text-[#0b0c12]">Rarecoin</span>
-          </Link>
-
           {submitted ? (
             <div className="flex flex-col gap-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f3f93]/10">
@@ -62,14 +56,11 @@ export default function JoinPage() {
           ) : (
             <div className="flex flex-col gap-8">
               <div className="flex flex-col gap-3">
-                <span className="text-xs font-semibold uppercase tracking-widest text-[#0f3f93]">
-                  Early Access
-                </span>
                 <h1 className="font-heading text-4xl font-bold leading-tight text-[#0b0c12] md:text-5xl">
                   Be first when<br />RARE launches.
                 </h1>
                 <p className="text-sm leading-relaxed text-[#0b0c12]/50">
-                  One email. One launch notification. No spam, no noise — just the signal that matters.
+                  One email. One launch notification. No spam, no noise just the signal that matters.
                 </p>
               </div>
 

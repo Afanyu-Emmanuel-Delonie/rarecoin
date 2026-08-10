@@ -111,13 +111,12 @@ export default function CtaSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#F4F6FB] px-6 py-28 lg:px-16">
-      <div className="mx-auto max-w-7xl flex flex-col gap-24">
+    <section ref={sectionRef} className="bg-[#F4F6FB] px-6 py-16 md:py-24 lg:px-16">
+      <div className="mx-auto max-w-7xl flex flex-col gap-16 md:gap-24">
 
         {/* FAQ */}
         <div className="ctas-item flex flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">FAQ</span>
             <h2 className="font-heading text-3xl font-bold text-[#0b0c12] md:text-4xl">
               Common questions,<br />straight answers.
             </h2>
@@ -126,7 +125,7 @@ export default function CtaSection() {
         </div>
 
         {/* CTA banner */}
-        <div className="ctas-item relative overflow-hidden rounded-3xl bg-[#0b0c12] px-10 py-16 text-center md:px-20">
+        <div className="ctas-item relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#0b0c12] px-6 py-12 text-center md:px-16 md:py-16">
           {/* Subtle background spots */}
           <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full"
             style={{ background: "radial-gradient(circle, rgba(51,85,255,0.18) 0%, transparent 70%)" }} />

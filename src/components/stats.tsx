@@ -36,9 +36,9 @@ export default function Stats() {
   }, []);
 
   return (
-    <section ref={ref} className="bg-[#F4F6FB] px-6 py-20 lg:px-16">
+    <section ref={ref} className="bg-[#F4F6FB] px-6 pb-16 lg:px-16">
       <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:items-center md:gap-16">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16">
 
           {/* Left — text */}
           <div className="flex flex-col gap-6" data-slide-left>
