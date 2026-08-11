@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import { trackEvent } from "./analytics";
 
 /**
  * Next's <Link> doesn't reliably re-jump to a "/#id" hash when you're already
@@ -30,6 +31,7 @@ export function useHashNavClick() {
     if (!href.startsWith("/#")) return;
     const id = href.slice(2);
     e.preventDefault();
+    trackEvent("section_nav_click", { section: id });
     if (pathname === "/") {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
       window.history.replaceState(null, "", href);

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
 import { useHashNavClick, useHashScrollOnLoad } from "@/lib/hash-nav";
+import { trackEvent } from "@/lib/analytics";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -53,6 +54,11 @@ export default function Nav() {
     onHashClick(e, href);
   };
 
+  const handleJoinClick = (location: "desktop" | "mobile") => {
+    setMobileOpen(false);
+    trackEvent("join_cta_click", { location });
+  };
+
   return (
     <>
       <nav
@@ -83,6 +89,7 @@ export default function Nav() {
           {/* Desktop CTA */}
           <Link
             href="/join"
+            onClick={() => handleJoinClick("desktop")}
             className="hidden rounded-full bg-[#0b0c12] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] md:inline-flex"
           >
             Join RARE
@@ -113,6 +120,7 @@ export default function Nav() {
             ))}
             <Link
               href="/join"
+              onClick={() => handleJoinClick("mobile")}
               className="mt-2 rounded-full bg-[#0b0c12] px-5 py-3 text-center text-sm font-semibold text-white"
             >
               Join RARE

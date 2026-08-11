@@ -6,9 +6,14 @@ import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
 import { submitWaitlistForm } from "@/app/actions/waitlist";
 import { initialWaitlistFormState } from "@/app/actions/types";
+import { trackEvent } from "@/lib/analytics";
 
 function WaitlistForm() {
   const [state, formAction, pending] = useActionState(submitWaitlistForm, initialWaitlistFormState);
+
+  useEffect(() => {
+    if (state.status === "success") trackEvent("join_waitlist");
+  }, [state.status]);
 
   if (state.status === "success") {
     return (

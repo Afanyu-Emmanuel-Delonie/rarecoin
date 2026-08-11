@@ -4,6 +4,7 @@ import { Syne, Inter } from "next/font/google";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import BackToTop from "@/components/back-to-top";
+import AnalyticsTracker from "@/components/analytics-tracker";
 import "./globals.css";
 
 const syne = Syne({
@@ -96,6 +97,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
+        <AnalyticsTracker />
         <Nav />
         <BackToTop />
         {children}
