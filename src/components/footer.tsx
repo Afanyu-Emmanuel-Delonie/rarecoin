@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useHashNavClick } from "@/lib/hash-nav";
+import { trackEvent } from "@/lib/analytics";
 import { X, MessageCircle, Mail } from "lucide-react";
 
 function Logo() {
@@ -92,6 +93,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
+                  onClick={() => trackEvent("social_click", { network: label })}
                   className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-white/40 transition-all hover:border-[#3355ff]/50 hover:text-[#3355ff]"
                 >
                   <Icon size={15} strokeWidth={1.75} />

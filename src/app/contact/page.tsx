@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, X, MessageCircle, Mail, Check } from "lucide-react";
 import { submitContactForm } from "@/app/actions/sendNotification";
 import { initialContactFormState } from "@/app/actions/types";
+import { trackEvent } from "@/lib/analytics";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +19,10 @@ const socials = [
 export default function ContactPage() {
   const pageRef = useRef<HTMLDivElement>(null);
   const [state, formAction, pending] = useActionState(submitContactForm, initialContactFormState);
+
+  useEffect(() => {
+    if (state.status === "success") trackEvent("contact_submit");
+  }, [state.status]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -140,6 +145,7 @@ export default function ContactPage() {
               <div className="flex flex-col gap-3">
                 {socials.map(({ icon: Icon, label, handle, href }) => (
                   <a key={label} href={href} target="_blank" rel="noopener noreferrer"
+                    onClick={() => trackEvent("social_click", { network: label })}
                     className="contact-social group flex items-center gap-4 rounded-2xl bg-white/5 px-5 py-4 transition-all hover:bg-white/10">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/8 transition-colors group-hover:bg-[#3355ff]/20">
                       <Icon size={18} className="text-white/50 transition-colors group-hover:text-[#3355ff]" strokeWidth={1.75} />
