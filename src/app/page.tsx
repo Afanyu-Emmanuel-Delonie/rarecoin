@@ -6,10 +6,12 @@ import Tokenomics from "@/components/tokenomics";
 import Roadmap from "@/components/roadmap";
 import Community from "@/components/community";
 import CtaSection from "@/components/cta-section";
+import ScrollAnimations from "@/components/scroll-animations";
 
 export default function Home() {
   return (
     <>
+      <ScrollAnimations />
       <Hero />
       <Stats />
       <Features />

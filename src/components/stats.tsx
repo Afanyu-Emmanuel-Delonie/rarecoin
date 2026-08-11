@@ -8,10 +8,10 @@ import { ArrowRight } from "lucide-react";
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { value: "1B",  suffix: "",  label: "Fixed Supply",      highlight: false },
-  { value: "0",   suffix: "%", label: "Team Allocation",   highlight: false },
-  { value: "0",   suffix: "",  label: "Presale Rounds",    highlight: false },
-  { value: "100", suffix: "%", label: "Public from Day 1", highlight: true  },
+  { value: "1B",  counter: null, from: null, suffix: "",  label: "Fixed Supply",      highlight: false },
+  { value: "0",   counter: 0,    from: 20,   suffix: "%", label: "Team Allocation",   highlight: false },
+  { value: "0",   counter: 0,    from: 10,   suffix: "",  label: "Presale Rounds",    highlight: false },
+  { value: "100", counter: 100,  from: 0,    suffix: "%", label: "Public from Day 1", highlight: true  },
 ];
 
 export default function Stats() {
@@ -56,7 +56,7 @@ export default function Stats() {
             </div>
 
             <a
-              href="/tokenomics"
+              href="/#tokenomics"
               className="inline-flex w-fit items-center gap-2 rounded-full bg-[#0b0c12] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#0f3f93]"
             >
               View full tokenomics
@@ -72,7 +72,7 @@ export default function Stats() {
             </div>
 
             <div className="grid grid-cols-2 gap-3">
-              {stats.map(({ value, suffix, label, highlight }) => (
+              {stats.map(({ value, counter, from, suffix, label, highlight }) => (
                 <div
                   key={label}
                   className={`stat-item flex flex-col gap-2 rounded-2xl border px-6 py-6 ${
@@ -92,8 +92,15 @@ export default function Stats() {
                     className={`font-heading text-4xl font-bold ${
                       highlight ? "text-[#0f3f93]" : "text-[#0b0c12]"
                     }`}
+                    {...(counter !== null
+                      ? {
+                          "data-counter": String(counter),
+                          "data-counter-from": String(from),
+                          "data-counter-suffix": suffix,
+                        }
+                      : {})}
                   >
-                    {value}{suffix}
+                    {counter !== null ? `${from}${suffix}` : `${value}${suffix}`}
                   </span>
                 </div>
               ))}

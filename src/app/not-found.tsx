@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Home, FileText, Compass, Coins, Users, HelpCircle } from "lucide-react";
+import ScrollAnimations from "@/components/scroll-animations";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
@@ -23,8 +24,8 @@ function GhostCircles({ className }: { className?: string }) {
 const quickLinks = [
   { icon: Home,       label: "Home",        desc: "Back to the start",              href: "/" },
   { icon: Compass,    label: "About",       desc: "What Rarecoin stands for",        href: "/about" },
-  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/tokenomics" },
-  { icon: Users,      label: "Community",   desc: "Tiers and ambassador rewards",    href: "/community" },
+  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/#tokenomics" },
+  { icon: Users,      label: "Community",   desc: "Tiers and ambassador rewards",    href: "/#community" },
   { icon: FileText,   label: "White Paper", desc: "The full technical breakdown",    href: "/docs" },
   { icon: HelpCircle, label: "FAQ",         desc: "Legitimacy, contract, chain",     href: "/faq" },
 ];
@@ -32,6 +33,7 @@ const quickLinks = [
 export default function NotFound() {
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#F4F6FB] pt-20 flex flex-col justify-center">
+      <ScrollAnimations />
       {/* Top-edge gradient band */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72"

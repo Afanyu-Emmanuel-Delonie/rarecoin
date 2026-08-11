@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import ScrollAnimations from "@/components/scroll-animations";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -83,6 +84,7 @@ export default function AboutPage() {
 
   return (
     <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
+      <ScrollAnimations />
 
       {/* Hero — same structure & bg as the home hero */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">

@@ -3,7 +3,6 @@ import React from "react";
 import { Syne, Inter } from "next/font/google";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
-import ScrollAnimations from "@/components/scroll-animations";
 import BackToTop from "@/components/back-to-top";
 import "./globals.css";
 
@@ -25,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Rarecoin (RARE) on Proof",
   },
   description:
-    "Rarecoin (RARE) is a fixed-supply, fair-launch SPL token on Solana, launched through Proof's bonding curve — no presale, no team allocation, 100% public from the first trade.",
+    "Rarecoin (RARE) is a fixed-supply, fair-launch SPL token on Solana, launched through Proof's bonding curve  no presale, no team allocation, 100% public from the first trade.",
   keywords: ["Rarecoin", "RARE token", "Rarecoin Proof", "Rarecoin fair launch", "RARE Solana", "Proof bonding curve", "fair launch token", "community token", "SPL token"],
   alternates: {
     canonical: "/",
@@ -92,13 +91,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${syne.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F4F6FB]" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#F4F6FB] overflow-x-hidden" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
         />
         <Nav />
-        <ScrollAnimations />
         <BackToTop />
         {children}
         <Footer />

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
+import { useHashNavClick, useHashScrollOnLoad } from "@/lib/hash-nav";
 import { Menu, X } from "lucide-react";
 
 const links = [
@@ -11,7 +12,7 @@ const links = [
   { label: "Tokenomics",  href: "/#tokenomics" },
   { label: "Roadmap",     href: "/#roadmap" },
   { label: "Community",   href: "/#community" },
-  { label: "White Paper", href: "/docs" },
+  { label: "Contact",     href: "/contact" },
 ];
 
 function Logo() {
@@ -29,6 +30,8 @@ export default function Nav() {
   const navRef = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const onHashClick = useHashNavClick();
+  useHashScrollOnLoad();
 
   // Entrance animation
   useEffect(() => {
@@ -44,6 +47,11 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    setMobileOpen(false);
+    onHashClick(e, href);
+  };
 
   return (
     <>
@@ -64,6 +72,7 @@ export default function Nav() {
               <Link
                 key={label}
                 href={href}
+                onClick={(e) => handleNavClick(e, href)}
                 className="text-sm font-medium text-[#0b0c12]/60 transition-colors hover:text-[#0b0c12]"
               >
                 {label}
@@ -96,7 +105,7 @@ export default function Nav() {
               <Link
                 key={label}
                 href={href}
-                onClick={() => setMobileOpen(false)}
+                onClick={(e) => handleNavClick(e, href)}
                 className="rounded-xl px-3 py-3 text-sm font-medium text-[#0b0c12]/70 transition-colors hover:bg-[#0b0c12]/4 hover:text-[#0b0c12]"
               >
                 {label}

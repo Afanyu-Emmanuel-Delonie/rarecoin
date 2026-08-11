@@ -6,6 +6,14 @@ const nextConfig: NextConfig = {
   },
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      { source: "/tokenomics", destination: "/#tokenomics", permanent: true },
+      { source: "/roadmap", destination: "/#roadmap", permanent: true },
+      { source: "/community", destination: "/#community", permanent: true },
+      { source: "/utility", destination: "/#utility", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

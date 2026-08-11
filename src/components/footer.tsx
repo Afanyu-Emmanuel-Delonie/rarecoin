@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { X, MessageCircle, Globe } from "lucide-react";
+import { useHashNavClick } from "@/lib/hash-nav";
+import { X, MessageCircle, Mail } from "lucide-react";
 
 function Logo() {
   return (
@@ -30,18 +31,18 @@ const footerLinks = [
   {
     heading: "Token",
     links: [
-      { label: "Tokenomics",  href: "/tokenomics" },
-      { label: "Utility",     href: "/utility" },
-      { label: "Roadmap",     href: "/roadmap" },
+      { label: "Tokenomics",  href: "/#tokenomics" },
+      { label: "Utility",     href: "/#utility" },
+      { label: "Roadmap",     href: "/#roadmap" },
       { label: "White Paper", href: "/docs" },
     ],
   },
   {
     heading: "Community",
     links: [
-      { label: "Ambassador Program", href: "/community" },
-      { label: "Membership Tiers",   href: "/community" },
-      { label: "Contributor Rewards",href: "/utility" },
+      { label: "Ambassador Program", href: "/#community" },
+      { label: "Membership Tiers",   href: "/#community" },
+      { label: "Contributor Rewards",href: "/#utility" },
       { label: "Contact",            href: "/contact" },
     ],
   },
@@ -58,11 +59,13 @@ const footerLinks = [
 
 const socials = [
   { icon: X,             href: "https://x.com/TherealRarecoin", label: "X" },
-  { icon: MessageCircle, href: "#", label: "Telegram" },
-  { icon: Globe,         href: "#", label: "Website" },
+  { icon: MessageCircle, href: "#",                              label: "Telegram" },
+  { icon: Mail,          href: "mailto:hello@rarecoin.io",       label: "Email" },
 ];
 
 export default function Footer() {
+  const onHashClick = useHashNavClick();
+
   return (
     <footer className="relative overflow-hidden bg-[#0b0c12] px-6 pt-20 pb-10 lg:px-16">
       <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 text-[#3355ff] opacity-[0.05]">
@@ -77,28 +80,9 @@ export default function Footer() {
           <div className="flex flex-col gap-5 md:col-span-2">
             <Logo />
             <p className="max-w-xs text-sm leading-relaxed text-white/35">
-              A fixed-supply, community-first token on Solana. No presale, no team allocation — 100% public from the first trade.
+              A fixed-supply, community-first token on Solana. No presale, no team allocation 100% public from the first trade.
             </p>
-            {/* Footer mini signup */}
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex flex-col gap-2"
-            >
-              <p className="text-xs font-semibold uppercase tracking-widest text-white/25">Get launch updates</p>
-              <div className="flex gap-2">
-                <input
-                  type="email"
-                  placeholder="your@email.com"
-                  className="flex-1 min-w-0 rounded-xl bg-white/8 px-4 py-2.5 text-xs text-white placeholder:text-white/25 outline-none focus:bg-white/12 transition-all"
-                />
-                <button
-                  type="submit"
-                  className="rounded-xl bg-[#0f3f93] px-4 py-2.5 text-xs font-semibold text-white transition-colors hover:bg-[#0f3f93]/80"
-                >
-                  Notify me
-                </button>
-              </div>
-            </form>
+
             {/* Socials */}
             <div className="flex items-center gap-3">
               {socials.map(({ icon: Icon, href, label }) => (
@@ -127,6 +111,7 @@ export default function Footer() {
                   <li key={label}>
                     <Link
                       href={href}
+                      onClick={(e) => onHashClick(e, href)}
                       className="text-sm text-white/45 transition-colors hover:text-white"
                     >
                       {label}
