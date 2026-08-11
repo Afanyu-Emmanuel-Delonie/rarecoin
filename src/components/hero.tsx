@@ -1,23 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
+import { submitWaitlistForm } from "@/app/actions/waitlist";
+import { initialWaitlistFormState } from "@/app/actions/types";
 
 function WaitlistForm() {
-  const [name, setName]           = useState("");
-  const [email, setEmail]         = useState("");
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(submitWaitlistForm, initialWaitlistFormState);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!name || !email) return;
-    // TODO: persist to your backend
-    setSubmitted(true);
-  };
-
-  if (submitted) {
+  if (state.status === "success") {
     return (
       <div className="hero-cta flex items-center gap-2 rounded-full bg-[#0b0c12]/8 px-6 py-3 text-sm font-semibold text-[#0b0c12]">
         <Check size={16} />
@@ -27,30 +20,34 @@ function WaitlistForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="hero-cta flex w-full max-w-lg flex-col gap-2 sm:flex-row">
-      <input
-        type="text"
-        required
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Your name"
-        className="flex-1 rounded-full border border-[#0b0c12]/12 bg-white px-5 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/35 outline-none focus:border-[#3355ff]/40 transition-all"
-      />
-      <input
-        type="email"
-        required
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="your@email.com"
-        className="flex-1 rounded-full border border-[#0b0c12]/12 bg-white px-5 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/35 outline-none focus:border-[#3355ff]/40 transition-all"
-      />
-      <button
-        type="submit"
-        className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
-      >
-        Join Waitlist
-        <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-      </button>
+    <form action={formAction} className="hero-cta flex w-full max-w-lg flex-col gap-2">
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <input
+          type="text"
+          name="name"
+          required
+          placeholder="Your name"
+          className="flex-1 rounded-full border border-[#0b0c12]/12 bg-white px-5 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/35 outline-none focus:border-[#3355ff]/40 transition-all"
+        />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="your@email.com"
+          className="flex-1 rounded-full border border-[#0b0c12]/12 bg-white px-5 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/35 outline-none focus:border-[#3355ff]/40 transition-all"
+        />
+        <button
+          type="submit"
+          disabled={pending}
+          className="group inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          {pending ? "Joining…" : "Join Waitlist"}
+          <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+        </button>
+      </div>
+      {state.status === "error" && state.message && (
+        <p role="alert" className="text-sm text-red-600">{state.message}</p>
+      )}
     </form>
   );
 }

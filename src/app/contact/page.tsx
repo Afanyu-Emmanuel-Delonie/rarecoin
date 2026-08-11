@@ -1,9 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, X, MessageCircle, Mail, Check } from "lucide-react";
+import { submitContactForm } from "@/app/actions/sendNotification";
+import { initialContactFormState } from "@/app/actions/types";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +17,7 @@ const socials = [
 
 export default function ContactPage() {
   const pageRef = useRef<HTMLDivElement>(null);
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(submitContactForm, initialContactFormState);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -81,7 +83,7 @@ export default function ContactPage() {
               <h2 className="font-heading text-2xl font-bold text-[#0b0c12]">We read every message.</h2>
             </div>
 
-            {submitted ? (
+            {state.status === "success" ? (
               <div className="flex flex-1 flex-col items-center justify-center gap-4 py-12 text-center">
                 <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#3355ff]/10">
                   <Check size={24} className="text-[#3355ff]" />
@@ -90,32 +92,35 @@ export default function ContactPage() {
                 <p className="max-w-xs text-sm text-[#0b0c12]/50">We'll get back to you as soon as we can.</p>
               </div>
             ) : (
-              <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
+              <form className="flex flex-col gap-4" action={formAction}>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Name</label>
-                    <input type="text" required placeholder="Your name"
+                    <input type="text" name="name" required placeholder="Your name"
                       className="rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8 transition-all" />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Email</label>
-                    <input type="email" required placeholder="your@email.com"
+                    <input type="email" name="email" required placeholder="your@email.com"
                       className="rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8 transition-all" />
                   </div>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Subject</label>
-                  <input type="text" placeholder="Partnership / Press / General"
+                  <input type="text" name="subject" placeholder="Partnership / Press / General"
                     className="rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8 transition-all" />
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Message</label>
-                  <textarea required rows={5} placeholder="What's on your mind?"
+                  <textarea required name="message" rows={5} placeholder="What's on your mind?"
                     className="rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/30 outline-none focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8 transition-all resize-none" />
                 </div>
-                <button type="submit"
-                  className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3">
-                  Send Message
+                {state.status === "error" && state.message && (
+                  <p role="alert" className="text-sm text-red-600">{state.message}</p>
+                )}
+                <button type="submit" disabled={pending}
+                  className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:cursor-not-allowed disabled:opacity-60">
+                  {pending ? "Sending…" : "Send Message"}
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                 </button>
               </form>

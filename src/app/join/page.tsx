@@ -3,17 +3,12 @@
 import { useState } from "react";
 import { ArrowRight, Check } from "lucide-react";
 import Link from "next/link";
+import { useActionState } from "react";
+import { submitWaitlistForm } from "@/app/actions/waitlist";
+import { initialWaitlistFormState } from "@/app/actions/types";
 
 export default function JoinPage() {
-  const [form, setForm] = useState({ name: "", email: "" });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email) return;
-    // TODO: wire to your email provider (Mailchimp, ConvertKit, Resend, etc.)
-    setSubmitted(true);
-  };
+  const [state, formAction, pending] = useActionState(submitWaitlistForm, initialWaitlistFormState);
 
   return (
     <div className="min-h-screen bg-[#F4F6FB] flex flex-col">
@@ -31,7 +26,7 @@ export default function JoinPage() {
       <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-24">
         <div className="w-full max-w-md flex flex-col gap-10">
 
-          {submitted ? (
+          {state.status === "success" ? (
             <div className="flex flex-col gap-6">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#0f3f93]/10">
                 <Check size={24} className="text-[#0f3f93]" strokeWidth={2.5} />
@@ -64,40 +59,39 @@ export default function JoinPage() {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              <form action={formAction} className="flex flex-col gap-4">
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">
-                    Name
-                  </label>
+                  <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Name</label>
                   <input
                     type="text"
+                    name="name"
                     required
                     placeholder="Your name"
-                    value={form.name}
-                    onChange={(e) => setForm({ ...form, name: e.target.value })}
                     className="rounded-xl border border-[#0b0c12]/12 bg-white px-4 py-3.5 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none focus:border-[#0f3f93]/50 focus:ring-2 focus:ring-[#0f3f93]/8 transition-all"
                   />
                 </div>
 
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">
-                    Email
-                  </label>
+                  <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Email</label>
                   <input
                     type="email"
+                    name="email"
                     required
                     placeholder="your@email.com"
-                    value={form.email}
-                    onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="rounded-xl border border-[#0b0c12]/12 bg-white px-4 py-3.5 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none focus:border-[#0f3f93]/50 focus:ring-2 focus:ring-[#0f3f93]/8 transition-all"
                   />
                 </div>
+
+                {state.status === "error" && state.message && (
+                  <p role="alert" className="text-sm text-red-600">{state.message}</p>
+                )}
 
                 <button
                   type="submit"
-                  className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+                  disabled={pending}
+                  className="group mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Notify Me at Launch
+                  {pending ? "Submitting…" : "Notify Me at Launch"}
                   <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
                 </button>
 

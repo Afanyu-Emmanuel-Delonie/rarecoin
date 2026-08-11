@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowRight, Eye, EyeOff } from "lucide-react";
-
-const ADMIN_EMAIL    = "admin@rarecoin.io";
-const ADMIN_PASSWORD = "rarecoin2025";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithEmailAndPassword,
+  type AuthError,
+} from "firebase/auth";
+import { Eye, EyeOff, ArrowRight } from "lucide-react";
+import { auth } from "@/lib/firebase";
 
 function GoogleIcon() {
   return (
@@ -18,40 +22,60 @@ function GoogleIcon() {
   );
 }
 
-
+function mapAuthError(error: unknown): string {
+  const code = (error as AuthError)?.code;
+  switch (code) {
+    case "auth/invalid-credential":
+    case "auth/wrong-password":
+    case "auth/user-not-found":
+      return "Incorrect email or password.";
+    case "auth/too-many-requests":
+      return "Too many attempts. Please wait a moment and try again.";
+    case "auth/popup-closed-by-user":
+    case "auth/cancelled-popup-request":
+      return "Sign-in was cancelled.";
+    case "auth/popup-blocked":
+      return "Your browser blocked the sign-in popup. Allow popups for this site and try again.";
+    default:
+      return "Sign-in failed. Please try again.";
+  }
+}
 
 export default function VaultLogin() {
   const router = useRouter();
-  const [email, setEmail]       = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [show, setShow]         = useState(false);
-  const [error, setError]       = useState("");
-  const [loading, setLoading]   = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleGoogleSignIn = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      await signInWithPopup(auth, new GoogleAuthProvider());
+      router.push("/vault");
+    } catch (err) {
+      setError(mapAuthError(err));
+      setLoading(false);
+    }
+  };
+
+  const handleEmailSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError("");
-
-    setTimeout(() => {
-      if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-        sessionStorage.setItem("vault_auth", "1");
-        router.push("/vault");
-      } else {
-        setError("Incorrect email or password.");
-        setLoading(false);
-      }
-    }, 600);
-  };
-
-  const handleOAuth = (provider: string) => {
-    // TODO: wire to NextAuth or your OAuth provider
-    alert(`OAuth with ${provider} — wire up NextAuth or similar.`);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/vault");
+    } catch (err) {
+      setError(mapAuthError(err));
+      setLoading(false);
+    }
   };
 
   return (
     <div className="min-h-screen bg-[#F4F6FB] flex items-center justify-center px-6 py-16">
-      {/* Ambient spots — same as about/community hero */}
       <div
         className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/3 rounded-full"
         style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
@@ -62,8 +86,6 @@ export default function VaultLogin() {
       />
 
       <div className="relative w-full max-w-sm">
-
-        {/* Logo */}
         <div className="mb-10 flex flex-col items-center gap-2 text-center">
           <img src="/rarecoin.svg" alt="Rarecoin" className="h-8 w-auto" />
           <span className="font-heading text-lg font-bold text-[#0b0c12]">Rarecoin</span>
@@ -72,35 +94,24 @@ export default function VaultLogin() {
           </span>
         </div>
 
-        {/* Card */}
         <div className="rounded-3xl bg-white p-8 shadow-sm border border-[#0b0c12]/6">
+          <button
+            type="button"
+            onClick={handleGoogleSignIn}
+            disabled={loading}
+            className="flex w-full items-center justify-center gap-3 rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm font-semibold text-[#0b0c12] transition-all hover:border-[#0b0c12]/20 hover:bg-[#0b0c12]/4 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            <GoogleIcon />
+            {loading ? "Signing in…" : "Continue with Google"}
+          </button>
 
-          {/* OAuth buttons */}
-          <div className="flex flex-col gap-3 mb-6">
-            {[
-              { label: "Continue with Google", icon: <GoogleIcon />, onClick: () => handleOAuth("Google") },
-            ].map(({ label, icon, onClick }) => (
-              <button
-                key={label}
-                type="button"
-                onClick={onClick}
-                className="flex w-full items-center gap-3 rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm font-semibold text-[#0b0c12] transition-all hover:border-[#0b0c12]/20 hover:bg-[#0b0c12]/4"
-              >
-                {icon}
-                {label}
-              </button>
-            ))}
-          </div>
-
-          {/* Divider */}
-          <div className="relative mb-6 flex items-center gap-3">
+          <div className="relative my-6 flex items-center gap-3">
             <div className="h-px flex-1 bg-[#0b0c12]/8" />
             <span className="text-xs text-[#0b0c12]/30">or sign in with email</span>
             <div className="h-px flex-1 bg-[#0b0c12]/8" />
           </div>
 
-          {/* Email + password form */}
-          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <form onSubmit={handleEmailSignIn} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
               <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Email</label>
               <input
@@ -109,9 +120,7 @@ export default function VaultLogin() {
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); setError(""); }}
                 placeholder="your@email.com"
-                className={`w-full rounded-xl border bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all ${
-                  error ? "border-red-400/60" : "border-[#0b0c12]/10 focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
-                }`}
+                className="w-full rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
               />
             </div>
 
@@ -119,35 +128,34 @@ export default function VaultLogin() {
               <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Password</label>
               <div className="relative">
                 <input
-                  type={show ? "text" : "password"}
+                  type={showPassword ? "text" : "password"}
                   required
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setError(""); }}
                   placeholder="••••••••"
-                  className={`w-full rounded-xl border bg-[#F4F6FB] px-4 py-3 pr-11 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all ${
-                    error ? "border-red-400/60" : "border-[#0b0c12]/10 focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
-                  }`}
+                  className="w-full rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 pr-11 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
                 />
                 <button
                   type="button"
-                  onClick={() => setShow(!show)}
+                  onClick={() => setShowPassword(!showPassword)}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0b0c12]/30 hover:text-[#0b0c12]/60 transition-colors"
                 >
-                  {show ? <EyeOff size={16} /> : <Eye size={16} />}
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
-              {error && <p className="text-xs text-red-500">{error}</p>}
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="group mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:opacity-50"
+              className="group mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:cursor-not-allowed disabled:opacity-60"
             >
-              {loading ? "Verifying…" : "Sign In"}
+              {loading ? "Signing in…" : "Sign In"}
               {!loading && <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />}
             </button>
           </form>
+
+          {error && <p className="mt-4 text-center text-xs text-red-500">{error}</p>}
         </div>
 
         <p className="mt-6 text-center text-xs text-[#0b0c12]/30">
