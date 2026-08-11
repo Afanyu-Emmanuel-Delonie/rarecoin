@@ -25,12 +25,12 @@ const stats = [
 ];
 
 const comparison = [
-  { field: "Team allocation",       typical: "5–15% set aside pre-launch",    rarecoin: "None zero" },
+  { field: "Team allocation",       typical: "5–15% set aside pre-launch",    rarecoin: "None — zero" },
   { field: "Vesting schedule",      typical: "Cliff + 1–4yr linear unlock",   rarecoin: "Not applicable" },
   { field: "Presale / private round", typical: "Common, often discounted",    rarecoin: "None" },
-  { field: "Initial liquidity",     typical: "Team or investor funded",      rarecoin: "Formed by bonding curve" },
+  { field: "Initial liquidity",     typical: "Team- or investor-funded",      rarecoin: "Formed by bonding curve" },
   { field: "Supply at launch",      typical: "Partial rest locked/vesting", rarecoin: "100% tradable from trade one" },
-  { field: "Minting after launch",  typical: "Sometimes possible via governance", rarecoin: "Impossible no mint function" },
+  { field: "Minting after launch",  typical: "Sometimes possible via governance", rarecoin: "Impossible — no mint function" },
 ];
 
 const feeFlow = [
@@ -43,7 +43,7 @@ const explainers = [
   {
     icon: Lock,
     title: "Why a hard cap matters",
-    body: "Most tokens reserve the right to mint more. RARE has no mint function the 1,000,000,000 cap is enforced at the protocol level, not by a promise. No governance vote, no team decision can change it.",
+    body: "Most tokens reserve the right to mint more. RARE has no mint function — the 1,000,000,000 cap is enforced at the protocol level, not by a promise. No governance vote, no team decision can change it.",
   },
   {
     icon: Zap,
@@ -58,7 +58,7 @@ const explainers = [
   {
     icon: BarChart3,
     title: "What graduation means",
-    body: "When the bonding curve reaches its target, RARE graduates to a decentralised exchange. Liquidity is locked automatically by Proof's infrastructure no manual step, no team control over the pool.",
+    body: "When the bonding curve reaches its target, RARE graduates to a decentralised exchange. Liquidity is locked automatically by Proof's infrastructure — no manual step, no team control over the pool.",
   },
 ];
 
@@ -107,7 +107,7 @@ export default function Tokenomics() {
   }, []);
 
   return (
-    <div ref={pageRef} id="tokenomics" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
       {/* ── Hero ── */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
@@ -144,7 +144,7 @@ export default function Tokenomics() {
               className="tok-fact group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3">
               Read White Paper <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/#roadmap"
+            <Link href="/roadmap"
               className="tok-fact inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12">
               View Roadmap
             </Link>
@@ -153,7 +153,7 @@ export default function Tokenomics() {
       </section>
 
       {/* ── Key stats ── */}
-      <div className="bg-[#0b0c12] px-6 py-12 lg:px-16">
+      <div className="bg-[#0b0c12] px-6 py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-2 gap-px bg-white/8 rounded-2xl overflow-hidden md:grid-cols-4">
             {stats.map(({ value, label, sub }) => (
@@ -174,7 +174,7 @@ export default function Tokenomics() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Supply Distribution</span>
             <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">The full circle is yours.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-[#0b0c12]/50">
-              There is no pie chart with a team slice, an investor slice, or a treasury slice. The entire supply enters through one channel the public bonding curve.
+              There is no pie chart with a team slice, an investor slice, or a treasury slice. The entire supply enters through one channel — the public bonding curve.
             </p>
           </div>
 
@@ -182,7 +182,7 @@ export default function Tokenomics() {
             <div className="tok-graphic">
               <DistributionGraphic />
               <p className="mt-4 max-w-[220px] mx-auto text-center text-xs leading-relaxed text-[#0b0c12]/35">
-                No team, presale, or treasury slice the full circle is the public curve.
+                No team, presale, or treasury slice — the full circle is the public curve.
               </p>
             </div>
 
@@ -211,7 +211,7 @@ export default function Tokenomics() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Sustainability</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Where the fees go.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-white/40">
-              Rarecoin doesn't rely on a pre-minted treasury. Rewards and burns are funded by real trading activity disclosed, verifiable, and proportional to actual usage.
+              Rarecoin doesn't rely on a pre-minted treasury. Rewards and burns are funded by real trading activity — disclosed, verifiable, and proportional to actual usage.
             </p>
           </div>
 

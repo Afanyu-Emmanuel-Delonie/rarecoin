@@ -127,7 +127,7 @@ export default function Utility() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="utility" className="bg-[#F4F6FB] px-6 py-28 lg:px-16">
+    <section ref={sectionRef} id="utility" className="scroll-mt-20 bg-[#F4F6FB] px-6 py-28 lg:px-16">
       <div className="mx-auto max-w-7xl">
 
         {/* Heading row */}
@@ -208,7 +208,7 @@ export default function Utility() {
                       {description}
                     </p>
                     <a
-                      href="/community"
+                      href="/#community"
                       className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-[#3355ff] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#3355ff]/85"
                     >
                       Discover Now

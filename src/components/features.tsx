@@ -50,6 +50,7 @@ const cards = [
     ghost: GhostCircles,
     bg: "#E3EAFA",
     accent: "#0f3f93",
+    ghostParallax: "0.18",
   },
   {
     label: "Fixed Supply",
@@ -58,6 +59,7 @@ const cards = [
     ghost: GhostRings,
     bg: "#E6E4FC",
     accent: "#3355ff",
+    ghostParallax: "0.28",
   },
   {
     label: "Deflationary",
@@ -66,6 +68,7 @@ const cards = [
     ghost: GhostFlower,
     bg: "#F2E8FB",
     accent: "#7b3fe4",
+    ghostParallax: "0.22",
   },
 ];
 
@@ -99,7 +102,7 @@ export default function Features() {
     <section ref={sectionRef} id="features" className="bg-[#F4F6FB] px-6 py-24 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3" data-stagger>
-          {cards.map(({ label, headline, icon: Icon, ghost: Ghost, bg, accent }) => (
+          {cards.map(({ label, headline, icon: Icon, ghost: Ghost, bg, accent, ghostParallax }) => (
             <div
               key={label}
               className="feature-card group relative flex flex-col justify-between overflow-hidden rounded-3xl p-9"
@@ -107,6 +110,7 @@ export default function Features() {
             >
               {/* Ghost decoration */}
               <div
+                data-parallax={ghostParallax}
                 className="pointer-events-none absolute -bottom-16 -right-16 h-96 w-96 opacity-[0.1] transition-transform duration-500 ease-out group-hover:scale-105"
                 style={{ color: accent }}
               >

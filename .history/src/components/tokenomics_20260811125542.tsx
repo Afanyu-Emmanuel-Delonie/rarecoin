@@ -107,7 +107,7 @@ export default function Tokenomics() {
   }, []);
 
   return (
-    <div ref={pageRef} id="tokenomics" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
       {/* ── Hero ── */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
@@ -144,7 +144,7 @@ export default function Tokenomics() {
               className="tok-fact group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3">
               Read White Paper <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/#roadmap"
+            <Link href="/roadmap"
               className="tok-fact inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12">
               View Roadmap
             </Link>
@@ -153,7 +153,7 @@ export default function Tokenomics() {
       </section>
 
       {/* ── Key stats ── */}
-      <div className="bg-[#0b0c12] px-6 py-12 lg:px-16">
+      <div className="bg-[#0b0c12] px-6 py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-2 gap-px bg-white/8 rounded-2xl overflow-hidden md:grid-cols-4">
             {stats.map(({ value, label, sub }) => (

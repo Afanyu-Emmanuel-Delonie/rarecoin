@@ -86,10 +86,10 @@ const principles = [
 ];
 
 const steps = [
-  { num: "01", title: "Acquire RARE",         desc: "Buy RARE on the public bonding curve on Proof no presale, no whitelist, same price for everyone." },
+  { num: "01", title: "Acquire RARE",         desc: "Buy RARE on the public bonding curve on Proof — no presale, no whitelist, same price for everyone." },
   { num: "02", title: "Join the community",   desc: "Connect your wallet to verify your tier and unlock the channels and perks that match your holding." },
   { num: "03", title: "Participate & signal", desc: "Vote in community polls, tip other members, and contribute content or translations to earn recognition." },
-  { num: "04", title: "Earn rewards",         desc: "Active contributors are formally recognized and compensated in RARE from real trading fees not a pre-minted pool." },
+  { num: "04", title: "Earn rewards",         desc: "Active contributors are formally recognized and compensated in RARE from real trading fees — not a pre-minted pool." },
 ];
 
 export default function Community() {
@@ -116,7 +116,7 @@ export default function Community() {
   }, []);
 
   return (
-    <div ref={pageRef} id="community" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
       {/* ── Hero — matches about page structure ── */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
@@ -271,7 +271,7 @@ export default function Community() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#7b3fe4]">Ambassador Program</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Contribute. Get recognized. Earn RARE.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-white/40">
-              The most active and constructive community members are formally recognized and compensated in RARE funded by a disclosed share of real trading fees, not a pre-minted pool.
+              The most active and constructive community members are formally recognized and compensated in RARE — funded by a disclosed share of real trading fees, not a pre-minted pool.
             </p>
           </div>
 

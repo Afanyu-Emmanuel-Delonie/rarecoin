@@ -116,7 +116,7 @@ export default function Community() {
   }, []);
 
   return (
-    <div ref={pageRef} id="community" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
       {/* ── Hero — matches about page structure ── */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">

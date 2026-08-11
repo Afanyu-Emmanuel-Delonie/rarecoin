@@ -143,7 +143,7 @@ export default function CtaSection() {
               Shape the Future.
             </h2>
             <p className="max-w-md text-sm leading-relaxed text-white/45">
-              No presale. No team allocation. 100% public from the first trade. The community is the product — come build it.
+              No presale. No team allocation. 100% public from the first trade. The community is the product come build it.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link

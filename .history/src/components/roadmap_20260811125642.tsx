@@ -167,7 +167,7 @@ function MobilePhaseCards() {
   };
 
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-6">
       {/* Card viewport */}
       <div
         className="overflow-hidden cursor-grab active:cursor-grabbing select-none"
@@ -327,7 +327,7 @@ export default function Roadmap() {
   }, []);
 
   return (
-    <div ref={pageRef} id="roadmap" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} className="pt-20 bg-[#F4F6FB]">
 
       {/* ── Hero ── */}
       <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
@@ -351,11 +351,11 @@ export default function Roadmap() {
             Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee — and every milestone is disclosed publicly.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/#community"
+            <Link href="/community"
               className="road-cta group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3">
               Join the Community <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/#tokenomics"
+            <Link href="/tokenomics"
               className="road-cta inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12">
               View Tokenomics
             </Link>
