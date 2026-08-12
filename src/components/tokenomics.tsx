@@ -65,21 +65,22 @@ const explainers = [
 function DistributionGraphic() {
   return (
     <svg viewBox="0 0 320 320" fill="none" className="w-full max-w-xs mx-auto" aria-hidden="true">
-      <circle cx="160" cy="160" r="130" stroke="#3355ff" strokeWidth="28" opacity="0.08" />
-      <circle cx="160" cy="160" r="130" stroke="#3355ff" strokeWidth="28"
+      <circle cx="160" cy="160" r="130" stroke="#D4AF37" strokeWidth="28" opacity="0.08" />
+      <circle cx="160" cy="160" r="130" stroke="#D4AF37" strokeWidth="28"
         strokeDasharray="817 0" strokeLinecap="round" transform="rotate(-90 160 160)" opacity="0.85" />
-      <circle cx="160" cy="160" r="95" stroke="#0f3f93" strokeWidth="1" strokeDasharray="4 5" opacity="0.2" />
-      <text x="160" y="148" textAnchor="middle" fontSize="42" fontWeight="700" fill="#0b0c12" fontFamily="Space Grotesk, sans-serif">100%</text>
-      <text x="160" y="172" textAnchor="middle" fontSize="11" fill="#0b0c12" opacity="0.35" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">PUBLIC</text>
-      <rect x="88" y="198" width="144" height="30" rx="15" fill="#3355ff" opacity="0.1" />
-      <text x="160" y="218" textAnchor="middle" fontSize="11" fontWeight="600" fill="#3355ff" fontFamily="Space Grotesk, sans-serif">Bonding Curve Only</text>
+      <circle cx="160" cy="160" r="95" stroke="#D4AF37" strokeWidth="1" strokeDasharray="4 5" opacity="0.15" />
+      <text x="160" y="148" textAnchor="middle" fontSize="42" fontWeight="700" fill="#F5F7FA" fontFamily="Space Grotesk, sans-serif">100%</text>
+      <text x="160" y="172" textAnchor="middle" fontSize="11" fill="#F5F7FA" opacity="0.35" fontFamily="Space Grotesk, sans-serif" letterSpacing="2">PUBLIC</text>
+      <rect x="88" y="198" width="144" height="30" rx="15" fill="#D4AF37" opacity="0.12" />
+      <text x="160" y="218" textAnchor="middle" fontSize="11" fontWeight="600" fill="#D4AF37" fontFamily="Space Grotesk, sans-serif">Bonding Curve Only</text>
       {Array.from({ length: 24 }).map((_, i) => {
         const a = (i / 24) * Math.PI * 2 - Math.PI / 2;
+        const r = (n: number) => Math.round(n * 1000) / 1000;
         return (
           <line key={i}
-            x1={160 + 148 * Math.cos(a)} y1={160 + 148 * Math.sin(a)}
-            x2={160 + 156 * Math.cos(a)} y2={160 + 156 * Math.sin(a)}
-            stroke="#0b0c12" strokeWidth="1.5" opacity="0.08"
+            x1={r(160 + 148 * Math.cos(a))} y1={r(160 + 148 * Math.sin(a))}
+            x2={r(160 + 156 * Math.cos(a))} y2={r(160 + 156 * Math.sin(a))}
+            stroke="#F5F7FA" strokeWidth="1.5" opacity="0.06"
           />
         );
       })}
@@ -107,45 +108,44 @@ export default function Tokenomics() {
   }, []);
 
   return (
-    <div ref={pageRef} id="tokenomics" className="scroll-mt-20 bg-[#F4F6FB]">
+    <div ref={pageRef} id="tokenomics" className="scroll-mt-20 bg-[#08090D]">
 
       {/* ── Hero ── */}
-      <section className="relative min-h-screen overflow-hidden bg-[#F4F6FB] flex flex-col justify-center">
+      <section className="relative min-h-screen overflow-hidden bg-[#08090D] flex flex-col justify-center">
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute inset-x-0 top-0 h-72"
-            style={{ background: "linear-gradient(to bottom, rgba(15,63,147,0.08) 0%, rgba(15,63,147,0.03) 50%, transparent 100%)" }} />
+            style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, transparent 100%)" }} />
           <div className="absolute right-0 top-0 h-[420px] w-[420px] translate-x-1/4 -translate-y-1/4 rounded-full sm:h-[600px] sm:w-[600px] xl:h-[760px] xl:w-[760px]"
-            style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 68%)" }} />
           <div className="absolute left-0 bottom-0 h-[320px] w-[320px] -translate-x-1/3 translate-y-1/3 rounded-full sm:h-[440px] sm:w-[440px] xl:h-[560px] xl:w-[560px]"
-            style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 68%)" }} />
         </div>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
-          style={{ background: "linear-gradient(to bottom, transparent 0%, #F4F6FB 100%)" }} />
+          style={{ background: "linear-gradient(to bottom, transparent 0%, #08090D 100%)" }} />
 
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-6 py-16 text-center sm:gap-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
-          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b0c12] sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
+          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
             <span className="tok-word block">Nothing hidden</span>
-            <span className="tok-word block text-[#0f3f93]">in the numbers.</span>
+            <span className="tok-word block text-[#D4AF37]">in the numbers.</span>
           </h1>
-          <p className="tok-sub max-w-sm text-sm leading-relaxed text-[#0b0c12]/55 sm:max-w-xl lg:max-w-2xl">
+          <p className="tok-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl lg:max-w-2xl">
             No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way through the public bonding curve on Proof.
           </p>
-          {/* Token facts strip */}
           <div className="flex flex-wrap justify-center gap-2">
             {facts.map(({ label, value }) => (
-              <div key={label} className="tok-fact flex items-center gap-2 rounded-full border border-[#0b0c12]/10 bg-white px-4 py-2 text-xs">
-                <span className="text-[#0b0c12]/35">{label}</span>
-                <span className="font-semibold text-[#0b0c12]/80">{value}</span>
+              <div key={label} className="tok-fact flex items-center gap-2 rounded-full border border-white/10 bg-white/4 px-4 py-2 text-xs">
+                <span className="text-white/35">{label}</span>
+                <span className="font-semibold text-white/70">{value}</span>
               </div>
             ))}
           </div>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/docs"
-              className="tok-fact group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3">
+              className="tok-fact group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
               Read White Paper <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link href="/#roadmap"
-              className="tok-fact inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12">
+              className="tok-fact inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
               View Roadmap
             </Link>
           </div>
@@ -153,14 +153,14 @@ export default function Tokenomics() {
       </section>
 
       {/* ── Key stats ── */}
-      <div className="bg-[#0b0c12] px-6 py-12 lg:px-16">
+      <div className="bg-[#111318] px-6 py-12 lg:px-16">
         <div className="mx-auto max-w-7xl">
-          <div className="grid grid-cols-2 gap-px bg-white/8 rounded-2xl overflow-hidden md:grid-cols-4">
+          <div className="grid grid-cols-2 gap-px bg-white/6 rounded-2xl overflow-hidden md:grid-cols-4">
             {stats.map(({ value, label, sub }) => (
-              <div key={label} className="tok-stat flex flex-col gap-1.5 bg-[#0b0c12] px-8 py-10">
-                <span className="font-heading text-5xl font-bold text-white">{value}</span>
-                <span className="text-sm font-semibold text-white/70">{label}</span>
-                <span className="text-xs text-white/30">{sub}</span>
+              <div key={label} className="tok-stat flex flex-col gap-1.5 bg-[#111318] px-8 py-10">
+                <span className="font-heading text-5xl font-bold text-[#D4AF37]">{value}</span>
+                <span className="text-sm font-semibold text-white/60">{label}</span>
+                <span className="text-xs text-white/25">{sub}</span>
               </div>
             ))}
           </div>
@@ -171,9 +171,9 @@ export default function Tokenomics() {
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="flex flex-col gap-16">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Supply Distribution</span>
-            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">The full circle is yours.</h2>
-            <p className="max-w-xl text-sm leading-relaxed text-[#0b0c12]/50">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Supply Distribution</span>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">The full circle is yours.</h2>
+            <p className="max-w-xl text-sm leading-relaxed text-white/40">
               There is no pie chart with a team slice, an investor slice, or a treasury slice. The entire supply enters through one channel the public bonding curve.
             </p>
           </div>
@@ -181,22 +181,22 @@ export default function Tokenomics() {
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2 md:items-center">
             <div className="tok-graphic">
               <DistributionGraphic />
-              <p className="mt-4 max-w-[220px] mx-auto text-center text-xs leading-relaxed text-[#0b0c12]/35">
+              <p className="mt-4 max-w-[220px] mx-auto text-center text-xs leading-relaxed text-white/30">
                 No team, presale, or treasury slice the full circle is the public curve.
               </p>
             </div>
 
             <div className="flex flex-col gap-2">
-              <div className="mb-4 grid grid-cols-[1.2fr_1fr_1fr] gap-3 text-xs font-semibold uppercase tracking-widest text-[#0b0c12]/30">
+              <div className="mb-4 grid grid-cols-[1.2fr_1fr_1fr] gap-3 text-xs font-semibold uppercase tracking-widest text-white/25">
                 <span>Field</span>
                 <span>Typical Token</span>
-                <span className="text-[#3355ff]">Rarecoin</span>
+                <span className="text-[#D4AF37]">Rarecoin</span>
               </div>
               {comparison.map(({ field, typical, rarecoin }) => (
-                <div key={field} className="tok-row grid grid-cols-[1.2fr_1fr_1fr] gap-3 rounded-xl border border-transparent px-4 py-3.5 text-sm transition-colors hover:border-[#0b0c12]/6 hover:bg-white">
-                  <span className="font-medium text-[#0b0c12]/70">{field}</span>
-                  <span className="text-[#0b0c12]/35">{typical}</span>
-                  <span className="font-semibold text-[#0b0c12]">{rarecoin}</span>
+                <div key={field} className="tok-row grid grid-cols-[1.2fr_1fr_1fr] gap-3 rounded-xl border border-transparent px-4 py-3.5 text-sm transition-colors hover:border-white/6 hover:bg-white/3">
+                  <span className="font-medium text-white/60">{field}</span>
+                  <span className="text-white/30">{typical}</span>
+                  <span className="font-semibold text-white">{rarecoin}</span>
                 </div>
               ))}
             </div>
@@ -205,10 +205,10 @@ export default function Tokenomics() {
       </div>
 
       {/* ── How fees work ── */}
-      <div className="bg-[#0b0c12] px-6 py-28 lg:px-16">
+      <div className="bg-[#111318] px-6 py-28 lg:px-16">
         <div className="mx-auto max-w-7xl flex flex-col gap-12">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Sustainability</span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Sustainability</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Where the fees go.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-white/40">
               Rarecoin doesn't rely on a pre-minted treasury. Rewards and burns are funded by real trading activity disclosed, verifiable, and proportional to actual usage.
@@ -218,15 +218,15 @@ export default function Tokenomics() {
           <div className="flex flex-col gap-3 md:flex-row md:items-stretch">
             {feeFlow.map(({ icon: Icon, label, description }, i) => (
               <div key={label} className="flex flex-1 items-center gap-3">
-                <div className="tok-flow flex flex-1 flex-col gap-4 rounded-2xl border border-white/8 bg-white/4 p-7">
-                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/15">
-                    <Icon size={20} className="text-[#3355ff]" strokeWidth={1.75} />
+                <div className="tok-flow flex flex-1 flex-col gap-4 rounded-2xl border border-white/8 bg-white/3 p-7">
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#D4AF37]/12">
+                    <Icon size={20} className="text-[#D4AF37]" strokeWidth={1.75} />
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <span className="font-heading text-base font-bold text-white">{label}</span>
-                    <span className="text-sm leading-relaxed text-white/45">{description}</span>
+                    <span className="text-sm leading-relaxed text-white/40">{description}</span>
                   </div>
-                  <div className="mt-auto flex h-7 w-7 items-center justify-center rounded-full bg-white/8 text-xs font-bold text-white/30">
+                  <div className="mt-auto flex h-7 w-7 items-center justify-center rounded-full bg-white/6 text-xs font-bold text-white/25">
                     {i + 1}
                   </div>
                 </div>
@@ -243,22 +243,22 @@ export default function Tokenomics() {
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="flex flex-col gap-12">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">How It Works</span>
-            <h2 className="font-heading text-4xl font-bold text-[#0b0c12] md:text-5xl">The mechanics, explained.</h2>
-            <p className="max-w-xl text-sm leading-relaxed text-[#0b0c12]/50">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">How It Works</span>
+            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">The mechanics, explained.</h2>
+            <p className="max-w-xl text-sm leading-relaxed text-white/40">
               No jargon. Just clear answers to the questions every new holder should ask before buying.
             </p>
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {explainers.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="tok-explain flex flex-col gap-4 rounded-3xl bg-white p-8 border border-[#0b0c12]/6">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#3355ff]/10">
-                  <Icon size={20} className="text-[#3355ff]" strokeWidth={1.75} />
+              <div key={title} className="tok-explain flex flex-col gap-4 rounded-3xl bg-[#111318] p-8 border border-white/6">
+                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#D4AF37]/10">
+                  <Icon size={20} className="text-[#D4AF37]" strokeWidth={1.75} />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h3 className="font-heading text-lg font-bold text-[#0b0c12]">{title}</h3>
-                  <p className="text-sm leading-relaxed text-[#0b0c12]/55">{body}</p>
+                  <h3 className="font-heading text-lg font-bold text-white">{title}</h3>
+                  <p className="text-sm leading-relaxed text-white/45">{body}</p>
                 </div>
               </div>
             ))}
@@ -268,13 +268,13 @@ export default function Tokenomics() {
 
       {/* ── CTA strip ── */}
       <div className="mx-auto max-w-7xl px-6 pb-28 lg:px-16">
-        <div className="flex flex-col gap-4 rounded-3xl bg-[#0b0c12] p-10 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-1">
             <h3 className="font-heading text-xl font-bold text-white">Want the full picture?</h3>
-            <p className="text-sm text-white/40">The white paper covers every number in detail.</p>
+            <p className="text-sm text-white/35">The white paper covers every number in detail.</p>
           </div>
           <Link href="/docs"
-            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#0f3f93] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-white hover:text-[#0b0c12] hover:gap-3">
+            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
             Read White Paper
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>

@@ -32,56 +32,56 @@ const quickLinks = [
 
 export default function NotFound() {
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#F4F6FB] pt-20 flex flex-col justify-center">
+    <div className="relative min-h-screen overflow-hidden bg-[#08090D] pt-20 flex flex-col justify-center">
       <ScrollAnimations />
       {/* Top-edge gradient band */}
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(15,63,147,0.08) 0%, rgba(15,63,147,0.03) 50%, transparent 100%)",
+            "linear-gradient(to bottom, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, transparent 100%)",
         }}
       />
       {/* Ambient spot — right */}
       <div
         className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
-        style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 68%)" }}
       />
       {/* Ambient spot — left-bottom */}
       <div
         className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
-        style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.05) 0%, transparent 68%)" }}
       />
 
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-10">
 
-        <span data-reveal className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
+        <span data-reveal className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">
           404 — Off the bonding curve
         </span>
 
         <h1
           data-reveal
           data-reveal-delay="0.1"
-          className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-[#0b0c12] sm:text-5xl sm:leading-[1.05] md:text-6xl"
+          className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl"
         >
           This page didn&apos;t make it to circulation.
         </h1>
 
-        <p data-reveal data-reveal-delay="0.2" className="max-w-md text-sm leading-relaxed text-[#0b0c12]/55 sm:max-w-xl sm:text-base">
+        <p data-reveal data-reveal-delay="0.2" className="max-w-md text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base">
           The page you're looking for doesn't exist, moved, or the link was mistyped. Everything real on Rarecoin lives at one of these:
         </p>
 
         <div data-reveal data-reveal-delay="0.3" className="flex flex-wrap justify-center gap-3">
           <Link
             href="/"
-            className="group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+            className="group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3"
           >
             Back to Home
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
           <Link
             href="/faq"
-            className="inline-flex items-center gap-2 rounded-full border border-[#3355ff]/25 bg-[#3355ff]/6 px-6 py-3 text-sm font-semibold text-[#0f3f93] transition-all hover:border-[#3355ff]/50 hover:bg-[#3355ff]/12"
+            className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/70 transition-all hover:border-white/25 hover:bg-white/10"
           >
             Visit the FAQ
           </Link>
@@ -93,17 +93,17 @@ export default function NotFound() {
             <Link
               key={label}
               href={href}
-              className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-[#0b0c12]/8 bg-white p-5 text-left transition-all hover:border-[#3355ff]/30 hover:bg-[#3355ff]/4"
+              className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-white/6 bg-[#111318] p-5 text-left transition-all hover:border-[#D4AF37]/25 hover:bg-[#D4AF37]/4"
             >
-              <div className="pointer-events-none absolute -bottom-8 -right-8 h-24 w-24 text-[#3355ff] opacity-[0.05]">
+              <div className="pointer-events-none absolute -bottom-8 -right-8 h-24 w-24 text-[#D4AF37] opacity-[0.05]">
                 <GhostCircles className="h-full w-full" />
               </div>
-              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#3355ff]/10">
-                <Icon size={17} className="text-[#3355ff]" strokeWidth={1.75} />
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#D4AF37]/10">
+                <Icon size={17} className="text-[#D4AF37]" strokeWidth={1.75} />
               </div>
               <div className="relative flex flex-col gap-0.5">
-                <span className="font-heading text-sm font-bold text-[#0b0c12]">{label}</span>
-                <span className="text-xs text-[#0b0c12]/45">{desc}</span>
+                <span className="font-heading text-sm font-bold text-white">{label}</span>
+                <span className="text-xs text-white/40">{desc}</span>
               </div>
             </Link>
           ))}

@@ -75,57 +75,57 @@ export default function VaultLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F4F6FB] flex items-center justify-center px-6 py-16">
+    <div className="min-h-screen bg-[#08090D] flex items-center justify-center px-6 py-16">
       <div
         className="pointer-events-none fixed right-0 top-0 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/3 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(15,63,147,0.10) 0%, transparent 68%)" }}
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 68%)" }}
       />
       <div
         className="pointer-events-none fixed left-0 bottom-0 h-[400px] w-[400px] -translate-x-1/3 translate-y-1/3 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(15,63,147,0.07) 0%, transparent 68%)" }}
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 68%)" }}
       />
 
       <div className="relative w-full max-w-sm">
         <div className="mb-10 flex flex-col items-center gap-2 text-center">
-          <img src="/rarecoin.svg" alt="Rarecoin" className="h-8 w-auto" />
-          <span className="font-heading text-lg font-bold text-[#0b0c12]">Rarecoin</span>
-          <span className="mt-1 rounded-full bg-[#3355ff]/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
+          <img src="/rare-3.png" alt="Rarecoin" className="h-10 w-auto" />
+          <span className="font-heading text-lg font-bold text-white">Rarecoin</span>
+          <span className="mt-1 rounded-full bg-[#D4AF37]/12 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">
             Vault Access
           </span>
         </div>
 
-        <div className="rounded-3xl bg-white p-8 shadow-sm border border-[#0b0c12]/6">
+        <div className="rounded-3xl bg-[#111318] border border-white/6 p-8">
           <button
             type="button"
             onClick={handleGoogleSignIn}
             disabled={loading}
-            className="flex w-full items-center justify-center gap-3 rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm font-semibold text-[#0b0c12] transition-all hover:border-[#0b0c12]/20 hover:bg-[#0b0c12]/4 disabled:cursor-not-allowed disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-3 rounded-xl border border-white/10 bg-white/4 px-4 py-3 text-sm font-semibold text-white transition-all hover:border-white/20 hover:bg-white/8 disabled:cursor-not-allowed disabled:opacity-60"
           >
             <GoogleIcon />
             {loading ? "Signing in…" : "Continue with Google"}
           </button>
 
           <div className="relative my-6 flex items-center gap-3">
-            <div className="h-px flex-1 bg-[#0b0c12]/8" />
-            <span className="text-xs text-[#0b0c12]/30">or sign in with email</span>
-            <div className="h-px flex-1 bg-[#0b0c12]/8" />
+            <div className="h-px flex-1 bg-white/8" />
+            <span className="text-xs text-white/25">or sign in with email</span>
+            <div className="h-px flex-1 bg-white/8" />
           </div>
 
           <form onSubmit={handleEmailSignIn} className="flex flex-col gap-4">
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Email</label>
+              <label className="text-xs font-semibold uppercase tracking-wider text-white/30">Email</label>
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => { setEmail(e.target.value); setError(""); }}
                 placeholder="your@email.com"
-                className="w-full rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
+                className="w-full rounded-xl border border-white/10 bg-white/4 px-4 py-3 text-sm text-white placeholder:text-white/25 outline-none transition-all focus:border-[#D4AF37]/40 focus:ring-2 focus:ring-[#D4AF37]/8"
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label className="text-xs font-semibold uppercase tracking-wider text-[#0b0c12]/40">Password</label>
+              <label className="text-xs font-semibold uppercase tracking-wider text-white/30">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
@@ -133,12 +133,12 @@ export default function VaultLogin() {
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); setError(""); }}
                   placeholder="••••••••"
-                  className="w-full rounded-xl border border-[#0b0c12]/10 bg-[#F4F6FB] px-4 py-3 pr-11 text-sm text-[#0b0c12] placeholder:text-[#0b0c12]/25 outline-none transition-all focus:border-[#3355ff]/40 focus:ring-2 focus:ring-[#3355ff]/8"
+                  className="w-full rounded-xl border border-white/10 bg-white/4 px-4 py-3 pr-11 text-sm text-white placeholder:text-white/25 outline-none transition-all focus:border-[#D4AF37]/40 focus:ring-2 focus:ring-[#D4AF37]/8"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0b0c12]/30 hover:text-[#0b0c12]/60 transition-colors"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-white/25 hover:text-white/60 transition-colors"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -148,17 +148,17 @@ export default function VaultLogin() {
             <button
               type="submit"
               disabled={loading}
-              className="group mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#0b0c12] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3 disabled:cursor-not-allowed disabled:opacity-60"
+              className="group mt-1 inline-flex items-center justify-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {loading ? "Signing in…" : "Sign In"}
               {!loading && <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />}
             </button>
           </form>
 
-          {error && <p className="mt-4 text-center text-xs text-red-500">{error}</p>}
+          {error && <p className="mt-4 text-center text-xs text-red-400">{error}</p>}
         </div>
 
-        <p className="mt-6 text-center text-xs text-[#0b0c12]/30">
+        <p className="mt-6 text-center text-xs text-white/20">
           Restricted access. Authorised personnel only.
         </p>
       </div>

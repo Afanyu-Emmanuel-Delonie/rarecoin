@@ -35,7 +35,6 @@ const faqs = [
   },
 ];
 
-// ── Ghost decoration — oversized, low-opacity background mark ──────────────────
 function GhostRings({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 256 256" fill="none" className={className}>
@@ -49,21 +48,21 @@ function GhostRings({ className }: { className?: string }) {
 
 function FAQItem({ q, a, isOpen, onToggle }: { q: string; a: string; isOpen: boolean; onToggle: () => void }) {
   return (
-    <div className="border-b border-[#0b0c12]/8">
+    <div className="border-b border-white/8">
       <button
         onClick={onToggle}
         className="group flex w-full items-center justify-between gap-6 py-6 text-left"
       >
-        <span className="font-heading text-base font-semibold text-[#0b0c12] group-hover:text-[#3355ff] transition-colors">
+        <span className="font-heading text-base font-semibold text-white group-hover:text-[#D4AF37] transition-colors">
           {q}
         </span>
         {isOpen
-          ? <Minus size={16} className="shrink-0 text-[#3355ff]" />
-          : <Plus size={16} className="shrink-0 text-[#0b0c12]/30 group-hover:text-[#3355ff] transition-colors" />
+          ? <Minus size={16} className="shrink-0 text-[#D4AF37]" />
+          : <Plus size={16} className="shrink-0 text-white/25 group-hover:text-[#D4AF37] transition-colors" />
         }
       </button>
       <div className={`overflow-hidden transition-all duration-400 ease-in-out ${isOpen ? "max-h-64 pb-6" : "max-h-0"}`}>
-        <p className="text-sm leading-relaxed text-[#0b0c12]/55">{a}</p>
+        <p className="text-sm leading-relaxed text-white/45">{a}</p>
       </div>
     </div>
   );
@@ -111,13 +110,13 @@ export default function CtaSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="bg-[#F4F6FB] px-6 py-16 md:py-24 lg:px-16">
+    <section ref={sectionRef} className="bg-[#08090D] px-6 py-16 md:py-24 lg:px-16">
       <div className="mx-auto max-w-7xl flex flex-col gap-16 md:gap-24">
 
         {/* FAQ */}
         <div className="ctas-item flex flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <h2 className="font-heading text-3xl font-bold text-[#0b0c12] md:text-4xl">
+            <h2 className="font-heading text-3xl font-bold text-white md:text-4xl">
               Common questions,<br />straight answers.
             </h2>
           </div>
@@ -125,37 +124,36 @@ export default function CtaSection() {
         </div>
 
         {/* CTA banner */}
-        <div className="ctas-item relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#0b0c12] px-6 py-12 text-center md:px-16 md:py-16">
-          {/* Subtle background spots */}
+        <div className="ctas-item relative overflow-hidden rounded-2xl md:rounded-3xl bg-[#111318] border border-white/6 px-6 py-12 text-center md:px-16 md:py-16">
           <div className="pointer-events-none absolute left-0 top-0 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(51,85,255,0.18) 0%, transparent 70%)" }} />
+            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.12) 0%, transparent 70%)" }} />
           <div className="pointer-events-none absolute bottom-0 right-0 h-64 w-64 translate-x-1/2 translate-y-1/2 rounded-full"
-            style={{ background: "radial-gradient(circle, rgba(123,63,228,0.15) 0%, transparent 70%)" }} />
-          <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 text-white opacity-[0.04]">
+            style={{ background: "radial-gradient(circle, rgba(191,199,213,0.08) 0%, transparent 70%)" }} />
+          <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 text-white opacity-[0.03]">
             <GhostRings className="h-full w-full" />
           </div>
 
           <div className="relative z-10 flex flex-col items-center gap-7">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">
               Own the Rare
             </span>
             <h2 className="font-heading text-4xl font-bold leading-tight text-white md:text-6xl">
               Shape the Future.
             </h2>
-            <p className="max-w-md text-sm leading-relaxed text-white/45">
+            <p className="max-w-md text-sm leading-relaxed text-white/40">
               No presale. No team allocation. 100% public from the first trade. The community is the product come build it.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
                 href="/join"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#0b0c12] px-7 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] hover:gap-3"
+                className="group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-7 py-3.5 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3"
               >
                 Join RARE Early
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
                 href="/docs"
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-7 py-3.5 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/12"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-7 py-3.5 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10"
               >
                 White Paper
               </Link>

@@ -33,9 +33,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Rarecoin" }],
   creator: "Rarecoin",
   icons: {
-    icon: "/rarecoin.svg",
-    shortcut: "/rarecoin.svg",
-    apple: "/rarecoin.svg",
+    icon: "/rare-3.png",
+    shortcut: "/rare-3.png",
+    apple: "/rare-3.png",
   },
   openGraph: {
     type: "website",
@@ -92,7 +92,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${syne.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F4F6FB] overflow-x-hidden" suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[#08090D] overflow-x-hidden" suppressHydrationWarning>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}

@@ -32,36 +32,36 @@ export default function FaqPage() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <div className="bg-[#F4F6FB] pt-20">
+    <div className="bg-[#08090D] pt-20">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="bg-[#0b0c12] px-6 pt-28 pb-16 lg:px-16">
+      <div className="bg-[#111318] px-6 pt-28 pb-16 lg:px-16">
         <div className="mx-auto max-w-7xl">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">FAQ</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">FAQ</span>
           <h1 className="mt-3 font-heading text-5xl font-bold text-white md:text-6xl">Common questions,<br />straight answers.</h1>
         </div>
       </div>
 
       <div className="mx-auto max-w-3xl px-6 py-24 lg:px-16">
-        <div className="flex flex-col divide-y divide-[#0b0c12]/8">
+        <div className="flex flex-col divide-y divide-white/8">
           {faqs.map(({ q, a }, i) => (
             <div key={i}>
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="group flex w-full items-center justify-between gap-6 py-6 text-left"
               >
-                <span className="font-heading text-base font-semibold text-[#0b0c12] group-hover:text-[#3355ff] transition-colors">
+                <span className="font-heading text-base font-semibold text-white group-hover:text-[#D4AF37] transition-colors">
                   {q}
                 </span>
                 {open === i
-                  ? <Minus size={16} className="shrink-0 text-[#3355ff]" />
-                  : <Plus size={16} className="shrink-0 text-[#0b0c12]/30 group-hover:text-[#3355ff] transition-colors" />
+                  ? <Minus size={16} className="shrink-0 text-[#D4AF37]" />
+                  : <Plus size={16} className="shrink-0 text-white/25 group-hover:text-[#D4AF37] transition-colors" />
                 }
               </button>
               <div className={`overflow-hidden transition-all duration-300 ease-in-out ${open === i ? "max-h-48 pb-6" : "max-h-0"}`}>
-                <p className="text-sm leading-relaxed text-[#0b0c12]/55">{a}</p>
+                <p className="text-sm leading-relaxed text-white/45">{a}</p>
               </div>
             </div>
           ))}

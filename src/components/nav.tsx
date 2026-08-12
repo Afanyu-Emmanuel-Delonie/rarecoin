@@ -18,9 +18,9 @@ const links = [
 
 function Logo() {
   return (
-    <Link href="/" className="flex items-center justify-center gap-1 shrink-0">
-      <img src="/rarecoin.svg" alt="Rarecoin" className="h-6 w-auto" />
-      <span className="font-heading text-xl font-bold tracking-tight text-[#0b0c12]">
+    <Link href="/" className="flex items-center justify-center gap-2 shrink-0">
+      <img src="/rare-3.png" alt="Rarecoin" className="h-8 w-auto" />
+      <span className="font-heading text-xl font-bold tracking-tight text-white">
         Rarecoin
       </span>
     </Link>
@@ -34,7 +34,6 @@ export default function Nav() {
   const onHashClick = useHashNavClick();
   useHashScrollOnLoad();
 
-  // Entrance animation
   useEffect(() => {
     gsap.fromTo(navRef.current,
       { opacity: 0, y: -16 },
@@ -42,7 +41,6 @@ export default function Nav() {
     );
   }, []);
 
-  // Scroll shadow
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -65,7 +63,7 @@ export default function Nav() {
         ref={navRef}
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/80 backdrop-blur-md border-b border-[#0b0c12]/8 shadow-sm"
+            ? "bg-[#08090D]/90 backdrop-blur-md border-b border-white/8 shadow-sm"
             : "bg-transparent"
         }`}
       >
@@ -79,7 +77,7 @@ export default function Nav() {
                 key={label}
                 href={href}
                 onClick={(e) => handleNavClick(e, href)}
-                className="text-sm font-medium text-[#0b0c12]/60 transition-colors hover:text-[#0b0c12]"
+                className="text-sm font-medium text-white/50 transition-colors hover:text-white"
               >
                 {label}
               </Link>
@@ -90,7 +88,7 @@ export default function Nav() {
           <Link
             href="/join"
             onClick={() => handleJoinClick("desktop")}
-            className="hidden rounded-full bg-[#0b0c12] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#0f3f93] md:inline-flex"
+            className="hidden rounded-full bg-[#D4AF37] px-5 py-2.5 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] md:inline-flex"
           >
             Join RARE
           </Link>
@@ -98,7 +96,7 @@ export default function Nav() {
           {/* Mobile menu toggle */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#0b0c12]/10 text-[#0b0c12]/60 md:hidden"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 text-white/50 md:hidden"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X size={18} /> : <Menu size={18} />}
@@ -107,13 +105,13 @@ export default function Nav() {
 
         {/* Mobile menu */}
         <div className={`overflow-hidden transition-all duration-300 md:hidden ${mobileOpen ? "max-h-96" : "max-h-0"}`}>
-          <div className="flex flex-col gap-1 border-t border-[#0b0c12]/8 bg-white/95 backdrop-blur-md px-6 py-4">
+          <div className="flex flex-col gap-1 border-t border-white/8 bg-[#08090D]/95 backdrop-blur-md px-6 py-4">
             {links.map(({ label, href }) => (
               <Link
                 key={label}
                 href={href}
                 onClick={(e) => handleNavClick(e, href)}
-                className="rounded-xl px-3 py-3 text-sm font-medium text-[#0b0c12]/70 transition-colors hover:bg-[#0b0c12]/4 hover:text-[#0b0c12]"
+                className="rounded-xl px-3 py-3 text-sm font-medium text-white/60 transition-colors hover:bg-white/5 hover:text-white"
               >
                 {label}
               </Link>
@@ -121,7 +119,7 @@ export default function Nav() {
             <Link
               href="/join"
               onClick={() => handleJoinClick("mobile")}
-              className="mt-2 rounded-full bg-[#0b0c12] px-5 py-3 text-center text-sm font-semibold text-white"
+              className="mt-2 rounded-full bg-[#D4AF37] px-5 py-3 text-center text-sm font-semibold text-[#08090D]"
             >
               Join RARE
             </Link>

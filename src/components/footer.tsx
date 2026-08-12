@@ -8,7 +8,7 @@ import { X, MessageCircle, Mail } from "lucide-react";
 function Logo() {
   return (
     <div className="flex items-center gap-2.5">
-      <img src="/rarecoin.svg" alt="Rarecoin" className="h-6 w-auto" />
+      <img src="/rare-3.png" alt="Rarecoin" className="h-8 w-auto" />
       <span className="font-heading text-base font-bold tracking-tight text-white">
         Rarecoin
       </span>
@@ -68,8 +68,8 @@ export default function Footer() {
   const onHashClick = useHashNavClick();
 
   return (
-    <footer className="relative overflow-hidden bg-[#0b0c12] px-6 pt-20 pb-10 lg:px-16">
-      <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 text-[#3355ff] opacity-[0.05]">
+    <footer className="relative overflow-hidden bg-[#111318] px-6 pt-20 pb-10 lg:px-16">
+      <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 text-[#D4AF37] opacity-[0.04]">
         <GhostRings className="h-full w-full" />
       </div>
 
