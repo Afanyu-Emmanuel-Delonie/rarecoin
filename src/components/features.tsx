@@ -48,8 +48,8 @@ const cards = [
     headline: "No presale. No team cut. 100% public from trade one.",
     icon: ShieldCheck,
     ghost: GhostCircles,
-    bg: "#E3EAFA",
-    accent: "#0f3f93",
+    bg: "#111318",
+    accent: "#D4AF37",
     ghostParallax: "0.18",
   },
   {
@@ -57,8 +57,8 @@ const cards = [
     headline: "One billion RARE. Hard cap. No new tokens. Ever.",
     icon: Lock,
     ghost: GhostRings,
-    bg: "#E6E4FC",
-    accent: "#3355ff",
+    bg: "#0E1016",
+    accent: "#BFC7D5",
     ghostParallax: "0.28",
   },
   {
@@ -66,8 +66,8 @@ const cards = [
     headline: "Real trading fees fund buyback and burn events.",
     icon: Flame,
     ghost: GhostFlower,
-    bg: "#F2E8FB",
-    accent: "#7b3fe4",
+    bg: "#111318",
+    accent: "#F0D77A",
     ghostParallax: "0.22",
   },
 ];
@@ -99,7 +99,7 @@ export default function Features() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="features" className="bg-[#F4F6FB] px-6 py-24 lg:px-16">
+    <section ref={sectionRef} id="features" className="bg-[#08090D] px-6 py-24 lg:px-16">
       <div className="mx-auto max-w-7xl">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3" data-stagger>
           {cards.map(({ label, headline, icon: Icon, ghost: Ghost, bg, accent, ghostParallax }) => (
@@ -125,7 +125,7 @@ export default function Features() {
                 >
                   {label}
                 </span>
-                <h3 className="font-heading text-3xl font-bold leading-snug text-[#0b0c12]">
+                <h3 className="font-heading text-3xl font-bold leading-snug text-white">
                   {headline}
                 </h3>
               </div>

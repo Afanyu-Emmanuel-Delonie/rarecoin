@@ -50,16 +50,16 @@ const glossary = [
 
 export default function DocsPage() {
   return (
-    <div className="bg-[#F4F6FB] pt-20">
+    <div className="bg-[#08090D] pt-20">
       <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "White Paper", path: "/docs" }]} />
-      <div className="bg-[#0b0c12] px-6 pt-28 pb-16 lg:px-16">
+      <div className="bg-[#111318] px-6 pt-28 pb-16 lg:px-16">
         <div className="mx-auto max-w-7xl flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#3355ff]">Documentation</span>
+            <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Documentation</span>
             <h1 className="font-heading text-5xl font-bold text-white md:text-6xl">White Paper<br />25th July 2026</h1>
           </div>
           <Link href="https://x.com/TherealRarecoin" target="_blank"
-            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#3355ff] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#2244ee] hover:gap-3">
+            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
             Follow Updates
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
@@ -71,12 +71,12 @@ export default function DocsPage() {
 
           {/* Table of contents */}
           <div className="flex flex-col gap-6">
-            <h2 className="font-heading text-sm font-bold uppercase tracking-widest text-[#0b0c12]/40">Table of Contents</h2>
-            <div className="flex flex-col divide-y divide-[#0b0c12]/8">
+            <h2 className="font-heading text-sm font-bold uppercase tracking-widest text-white/30">Table of Contents</h2>
+            <div className="flex flex-col divide-y divide-white/8">
               {sections.map(({ num, title, anchor }) => (
                 <a key={num} href={`#${anchor}`}
-                  className="group flex items-center gap-3 py-3 text-sm text-[#0b0c12]/55 transition-colors hover:text-[#3355ff]">
-                  <span className="font-heading text-xs font-bold text-[#0b0c12]/20">{num}</span>
+                  className="group flex items-center gap-3 py-3 text-sm text-white/45 transition-colors hover:text-[#D4AF37]">
+                  <span className="font-heading text-xs font-bold text-white/20">{num}</span>
                   {title}
                 </a>
               ))}
@@ -87,20 +87,20 @@ export default function DocsPage() {
           <div className="flex flex-col gap-12 md:col-span-2">
 
             {/* Important notice */}
-            <div className="rounded-2xl border border-[#3355ff]/20 bg-[#3355ff]/5 p-6">
-              <p className="text-sm leading-relaxed text-[#0b0c12]/70">
-                <strong className="text-[#0b0c12]">Important Notice:</strong> This White Paper is provided for general informational purposes only. It does not constitute an offer to sell, or a solicitation of an offer to buy, any security or investment product. Digital assets are volatile and involve significant risk, including the possible loss of the entire amount contributed.
+            <div className="rounded-2xl border border-[#D4AF37]/20 bg-[#D4AF37]/5 p-6">
+              <p className="text-sm leading-relaxed text-white/60">
+                <strong className="text-white">Important Notice:</strong> This White Paper is provided for general informational purposes only. It does not constitute an offer to sell, or a solicitation of an offer to buy, any security or investment product. Digital assets are volatile and involve significant risk, including the possible loss of the entire amount contributed.
               </p>
             </div>
 
             {/* Glossary */}
             <div id="glossary" className="flex flex-col gap-6">
-              <h2 className="font-heading text-2xl font-bold text-[#0b0c12]">Glossary of Terms</h2>
+              <h2 className="font-heading text-2xl font-bold text-white">Glossary of Terms</h2>
               <div className="flex flex-col gap-4">
                 {glossary.map(({ term, def }) => (
-                  <div key={term} className="flex flex-col gap-1.5 rounded-xl border border-[#0b0c12]/8 bg-white p-5">
-                    <span className="font-heading text-sm font-bold text-[#3355ff]">{term}</span>
-                    <p className="text-sm leading-relaxed text-[#0b0c12]/60">{def}</p>
+                  <div key={term} className="flex flex-col gap-1.5 rounded-xl border border-white/6 bg-white/3 p-5">
+                    <span className="font-heading text-sm font-bold text-[#D4AF37]">{term}</span>
+                    <p className="text-sm leading-relaxed text-white/50">{def}</p>
                   </div>
                 ))}
               </div>

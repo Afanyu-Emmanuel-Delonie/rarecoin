@@ -36,8 +36,8 @@ export default function VaultPage() {
 
   if (!ready) {
     return (
-      <div className="min-h-screen bg-[#F4F6FB] flex items-center justify-center">
-        <div className="h-6 w-6 animate-spin rounded-full border-2 border-[#3355ff] border-t-transparent" />
+      <div className="min-h-screen bg-[#08090D] flex items-center justify-center">
+        <div className="h-6 w-6 animate-spin rounded-full border-2 border-white/10 border-t-[#D4AF37]" />
       </div>
     );
   }
