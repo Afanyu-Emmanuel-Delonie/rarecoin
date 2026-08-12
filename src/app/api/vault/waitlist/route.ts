@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 import type { Timestamp } from "firebase-admin/firestore";
 
 export async function GET(request: Request) {
+  try {
   const uid = await verifyVaultToken(bearerToken(request));
   if (!uid) return Response.json({ error: "Unauthorized" }, { status: 401 });
 
@@ -21,4 +22,8 @@ export async function GET(request: Request) {
     };
   });
   return Response.json(data);
+  } catch (e) {
+    console.error("[vault/waitlist]", e);
+    return Response.json({ error: String(e) }, { status: 500 });
+  }
 }

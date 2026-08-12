@@ -9,7 +9,17 @@ function getAdminApp(): App {
   const raw = process.env.FIREBASE_SERVICE_ACCOUNT_KEY;
   if (!raw) throw new Error("FIREBASE_SERVICE_ACCOUNT_KEY is not set");
 
-  const sa = JSON.parse(raw);
+  let sa: Record<string, string>;
+  try {
+    sa = JSON.parse(raw);
+  } catch (e) {
+    throw new Error(`FIREBASE_SERVICE_ACCOUNT_KEY is not valid JSON: ${e}`);
+  }
+
+  if (!sa.project_id || !sa.client_email || !sa.private_key) {
+    throw new Error(`FIREBASE_SERVICE_ACCOUNT_KEY is missing fields. Got keys: ${Object.keys(sa).join(", ")}`);
+  }
+
   return initializeApp({
     credential: cert({
       projectId: sa.project_id,
