@@ -98,14 +98,14 @@ export default function AboutPage() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/docs"
+            <Link href="/get-rare"
               className="about-cta group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-              Read White Paper
+              Get RARE
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/join"
+            <Link href="/#find-us"
               className="about-cta inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
-              Join Early
+              Join the Community
             </Link>
           </div>
         </div>
@@ -210,11 +210,11 @@ export default function AboutPage() {
           <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col gap-1">
               <h3 className="font-heading text-xl font-bold text-white">Ready to be part of it?</h3>
-              <p className="text-sm text-white/35">Get notified the moment RARE goes live.</p>
+              <p className="text-sm text-white/35">RARE is live on Solana — 100% public, from the first trade.</p>
             </div>
-            <Link href="/join"
+            <Link href="/get-rare"
               className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-              Join Early
+              Get RARE
               <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>

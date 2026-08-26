@@ -52,9 +52,9 @@ export default function Nav() {
     onHashClick(e, href);
   };
 
-  const handleJoinClick = (location: "desktop" | "mobile") => {
+  const handleGetRareClick = (location: "desktop" | "mobile") => {
     setMobileOpen(false);
-    trackEvent("join_cta_click", { location });
+    trackEvent("get_rare_cta_click", { location });
   };
 
   return (
@@ -86,11 +86,11 @@ export default function Nav() {
 
           {/* Desktop CTA */}
           <Link
-            href="/join"
-            onClick={() => handleJoinClick("desktop")}
+            href="/get-rare"
+            onClick={() => handleGetRareClick("desktop")}
             className="hidden rounded-full bg-[#D4AF37] px-5 py-2.5 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] md:inline-flex"
           >
-            Join RARE
+            Get RARE
           </Link>
 
           {/* Mobile menu toggle */}
@@ -117,11 +117,11 @@ export default function Nav() {
               </Link>
             ))}
             <Link
-              href="/join"
-              onClick={() => handleJoinClick("mobile")}
+              href="/get-rare"
+              onClick={() => handleGetRareClick("mobile")}
               className="mt-2 rounded-full bg-[#D4AF37] px-5 py-3 text-center text-sm font-semibold text-[#08090D]"
             >
-              Join RARE
+              Get RARE
             </Link>
           </div>
         </div>

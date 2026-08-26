@@ -2,8 +2,7 @@ import Hero from "@/components/hero";
 import Stats from "@/components/stats";
 import Features from "@/components/features";
 import Utility from "@/components/utility";
-import Tokenomics from "@/components/tokenomics";
-import Roadmap from "@/components/roadmap";
+import CtaBand from "@/components/cta-band";
 import Community from "@/components/community";
 import CtaSection from "@/components/cta-section";
 import ScrollAnimations from "@/components/scroll-animations";
@@ -16,8 +15,7 @@ export default function Home() {
       <Stats />
       <Features />
       <Utility />
-      <Tokenomics />
-      <Roadmap />
+      <CtaBand />
       <Community />
       <CtaSection />
     </>

@@ -60,7 +60,7 @@ export default function DocsPage() {
           </div>
           <Link href="https://x.com/TherealRarecoin" target="_blank"
             className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-            Follow Updates
+            Join the Community
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

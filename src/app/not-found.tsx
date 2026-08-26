@@ -25,7 +25,7 @@ const quickLinks = [
   { icon: Home,       label: "Home",        desc: "Back to the start",              href: "/" },
   { icon: Compass,    label: "About",       desc: "What Rarecoin stands for",        href: "/about" },
   { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/#tokenomics" },
-  { icon: Users,      label: "Community",   desc: "Tiers and ambassador rewards",    href: "/#community" },
+  { icon: Users,      label: "Community",   desc: "Membership tiers and how to join", href: "/#community" },
   { icon: FileText,   label: "White Paper", desc: "The full technical breakdown",    href: "/docs" },
   { icon: HelpCircle, label: "FAQ",         desc: "Legitimacy, contract, chain",     href: "/faq" },
 ];
@@ -68,7 +68,7 @@ export default function NotFound() {
         </h1>
 
         <p data-reveal data-reveal-delay="0.2" className="max-w-md text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base">
-          The page you're looking for doesn't exist, moved, or the link was mistyped. Everything real on Rarecoin lives at one of these:
+          The page you&rsquo;re looking for doesn&rsquo;t exist, moved, or the link was mistyped. Everything real on Rarecoin lives at one of these:
         </p>
 
         <div data-reveal data-reveal-delay="0.3" className="flex flex-wrap justify-center gap-3">

@@ -12,7 +12,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const socials = [
   { icon: X,             label: "X / Twitter", handle: "@TherealRarecoin",   href: "https://x.com/TherealRarecoin" },
-  { icon: MessageCircle, label: "Telegram",     handle: "Join the chat",      href: "#" },
+  { icon: MessageCircle, label: "Telegram",     handle: "Join the chat",      href: "https://t.me/Therealrarecoin" },
   { icon: Mail,          label: "Email",        handle: "hello@rarecoin.io",  href: "mailto:hello@rarecoin.io" },
 ];
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
                   <Check size={24} className="text-[#D4AF37]" />
                 </div>
                 <h3 className="font-heading text-xl font-bold text-white">Message sent!</h3>
-                <p className="max-w-xs text-sm text-white/40">We'll get back to you as soon as we can.</p>
+                <p className="max-w-xs text-sm text-white/40">We&rsquo;ll get back to you as soon as we can.</p>
               </div>
             ) : (
               <form className="flex flex-col gap-4" action={formAction}>

@@ -41,7 +41,6 @@ const footerLinks = [
   {
     heading: "Community",
     links: [
-      { label: "Ambassador Program", href: "/#community" },
       { label: "Membership Tiers",   href: "/#community" },
       { label: "Contributor Rewards",href: "/#utility" },
       { label: "Contact",            href: "/contact" },
@@ -60,7 +59,7 @@ const footerLinks = [
 
 const socials = [
   { icon: X,             href: "https://x.com/TherealRarecoin", label: "X" },
-  { icon: MessageCircle, href: "#",                              label: "Telegram" },
+  { icon: MessageCircle, href: "https://t.me/Therealrarecoin",   label: "Telegram" },
   { icon: Mail,          href: "mailto:hello@rarecoin.io",       label: "Email" },
 ];
 

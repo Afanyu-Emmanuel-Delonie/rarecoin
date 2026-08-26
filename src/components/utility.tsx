@@ -193,10 +193,10 @@ export default function Utility() {
                       {description}
                     </p>
                     <a
-                      href="/#community"
+                      href="#find-us"
                       className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#08090D] transition-colors hover:bg-[#F0D77A]"
                     >
-                      Discover Now
+                      Join the Community
                       <ArrowRight size={16} />
                     </a>
                   </div>

@@ -3,8 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { X, MessageCircle, Mail, Megaphone, Pen, Languages, CalendarDays, ArrowRight, CheckCircle2, Users, Zap, Shield } from "lucide-react";
-import Link from "next/link";
+import { X, MessageCircle, Mail, ArrowRight, CheckCircle2, Users, Zap, Shield } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -55,16 +54,9 @@ const tiers = [
   },
 ];
 
-const roles = [
-  { icon: Megaphone,    label: "Moderators" },
-  { icon: Pen,          label: "Creators" },
-  { icon: Languages,    label: "Translators" },
-  { icon: CalendarDays, label: "Organizers" },
-];
-
 const socials = [
   { icon: X,             label: "X / Twitter", handle: "@TherealRarecoin",  href: "https://x.com/TherealRarecoin" },
-  { icon: MessageCircle, label: "Telegram",     handle: "Join the chat",     href: "#" },
+  { icon: MessageCircle, label: "Telegram",     handle: "Join the chat",     href: "https://t.me/Therealrarecoin" },
   { icon: Mail,          label: "Email",        handle: "hello@rarecoin.io", href: "mailto:hello@rarecoin.io" },
 ];
 
@@ -87,14 +79,8 @@ export default function Community() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(".comm-word",   { opacity: 0, y: 40, skewY: 3 }, { opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.12 });
-      tl.fromTo(".comm-sub",    { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
-      tl.fromTo(".comm-cta",    { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, "-=0.3");
-
       gsap.fromTo(".comm-heading",  { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", scrollTrigger: { trigger: ".comm-heading",  start: "top 82%" } });
       gsap.fromTo(".comm-tier",     { opacity: 0, y: 44 }, { opacity: 1, y: 0, duration: 0.65, stagger: 0.12, ease: "power3.out", scrollTrigger: { trigger: ".comm-tier",     start: "top 85%" } });
-      gsap.fromTo(".comm-role",     { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.5, stagger: 0.08, ease: "power3.out", scrollTrigger: { trigger: ".comm-role",     start: "top 88%" } });
       gsap.fromTo(".comm-step",     { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: ".comm-step",     start: "top 85%" } });
       gsap.fromTo(".comm-principle",{ opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.6, stagger: 0.08, ease: "power3.out", scrollTrigger: { trigger: ".comm-principle", start: "top 85%" } });
       gsap.fromTo(".comm-social",   { opacity: 0, x: -20 }, { opacity: 1, x: 0, duration: 0.5, stagger: 0.1, ease: "power3.out", scrollTrigger: { trigger: ".comm-social",   start: "top 88%" } });
@@ -105,47 +91,6 @@ export default function Community() {
 
   return (
     <div ref={pageRef} id="community" className="scroll-mt-20 bg-[#08090D]">
-
-      {/* ── Hero ── */}
-      <section className="relative min-h-screen overflow-hidden bg-[#08090D] flex flex-col justify-center">
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute inset-x-0 top-0 h-72"
-            style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, transparent 100%)" }} />
-          <div className="absolute right-0 top-0 h-[420px] w-[420px] translate-x-1/4 -translate-y-1/4 rounded-full sm:h-[600px] sm:w-[600px] xl:h-[760px] xl:w-[760px]"
-            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 68%)" }} />
-          <div className="absolute left-0 bottom-0 h-[320px] w-[320px] -translate-x-1/3 translate-y-1/3 rounded-full sm:h-[440px] sm:w-[440px] xl:h-[560px] xl:w-[560px]"
-            style={{ background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 68%)" }} />
-        </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
-          style={{ background: "linear-gradient(to bottom, transparent 0%, #08090D 100%)" }} />
-
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
-          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
-            <span className="comm-word block">The community</span>
-            <span className="comm-word block text-[#D4AF37]">is the product.</span>
-          </h1>
-
-          <p className="comm-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl lg:max-w-2xl">
-            No marketing budget carved out at launch. Growth comes from the people who show up and they get rewarded for it.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/join"
-              className="comm-cta group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3"
-            >
-              Join the Community
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link
-              href="/docs"
-              className="comm-cta inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10"
-            >
-              White Paper
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ── How it works ── */}
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
@@ -241,35 +186,8 @@ export default function Community() {
         </div>
       </div>
 
-      {/* ── Ambassador program ── */}
-      <div className="relative overflow-hidden bg-[#111318] px-6 py-28 lg:px-16">
-        <div className="pointer-events-none absolute -bottom-20 -left-20 h-96 w-96 text-[#BFC7D5] opacity-[0.04]">
-          <GhostFlower className="h-full w-full" />
-        </div>
-        <div className="relative mx-auto max-w-7xl flex flex-col gap-12">
-          <div className="comm-heading flex flex-col gap-3">
-            <span className="text-xs font-semibold uppercase tracking-widest text-[#BFC7D5]">Ambassador Program</span>
-            <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Contribute. Get recognized. Earn RARE.</h2>
-            <p className="max-w-xl text-sm leading-relaxed text-white/40">
-              The most active and constructive community members are formally recognized and compensated in RARE funded by a disclosed share of real trading fees, not a pre-minted pool.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {roles.map(({ icon: Icon, label }) => (
-              <div key={label} className="comm-role flex flex-col items-center gap-3 rounded-2xl bg-white/4 border border-white/6 py-8 px-4 text-center">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#BFC7D5]/10">
-                  <Icon size={22} className="text-[#BFC7D5]" strokeWidth={1.75} />
-                </div>
-                <span className="text-sm font-semibold text-white/60">{label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ── Find us ── */}
-      <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
+      <div id="find-us" className="scroll-mt-24 mx-auto max-w-7xl px-6 py-28 lg:px-16">
         <div className="flex flex-col gap-12">
           <div className="comm-heading flex flex-col gap-3">
             <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Find Us</span>

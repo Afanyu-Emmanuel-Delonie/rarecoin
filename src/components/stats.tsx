@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,77 +36,47 @@ export default function Stats() {
 
   return (
     <section ref={ref} className="bg-[#08090D] px-6 pb-16 lg:px-16">
-      <div className="mx-auto max-w-7xl">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16">
+      <div className="mx-auto flex max-w-5xl flex-col items-center gap-6">
 
-          {/* Left — text */}
-          <div className="flex flex-col gap-6" data-slide-left>
-            <h2 className="font-heading text-3xl font-bold leading-tight text-white md:text-5xl">
-              Built for transparency.
-            </h2>
+        <h2 className="stat-badge font-heading text-3xl font-bold leading-tight text-white text-center md:text-5xl">
+          Nothing hidden<br className="sm:hidden" /> in the numbers.
+        </h2>
 
-            <div className="flex flex-col gap-3">
-              <p className="text-base leading-relaxed text-white/45">
-                Rarecoin puts every allocation, every wallet, and every trade on-chain verifiable by anyone, hidden from no one.
-              </p>
-              <p className="text-base leading-relaxed text-white/45">
-                No presale, no team cut, no vesting cliffs. Just a public bonding curve, open from the first block.
-              </p>
-            </div>
-
-            <a
-              href="/#tokenomics"
-              className="inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-5 py-3 text-sm font-semibold text-[#08090D] transition-colors hover:bg-[#F0D77A]"
+        <div className="grid w-full grid-cols-2 gap-3 md:grid-cols-4">
+          {stats.map(({ value, counter, from, suffix, label, highlight }) => (
+            <div
+              key={label}
+              className={`stat-item flex flex-col gap-2 rounded-2xl border px-6 py-6 ${
+                highlight
+                  ? "border-[#D4AF37]/20 bg-[#D4AF37]/8"
+                  : "border-white/8 bg-white/4"
+              }`}
             >
-              View full tokenomics
-              <ArrowRight size={16} />
-            </a>
-          </div>
-
-          {/* Right — status badge + 2x2 stat grid */}
-          <div className="flex flex-col gap-3" data-slide-right>
-            <div className="stat-badge flex items-center gap-2 rounded-2xl border border-white/8 bg-white/4 px-5 py-4">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
-              <span className="text-sm font-medium text-white/50">Rarecoin protocol stats</span>
+              <span
+                className={`text-sm font-medium ${
+                  highlight ? "text-[#D4AF37]" : "text-white/40"
+                }`}
+              >
+                {label}
+              </span>
+              <span
+                className={`font-heading text-4xl font-bold ${
+                  highlight ? "text-[#D4AF37]" : "text-white"
+                }`}
+                {...(counter !== null
+                  ? {
+                      "data-counter": String(counter),
+                      "data-counter-from": String(from),
+                      "data-counter-suffix": suffix,
+                    }
+                  : {})}
+              >
+                {counter !== null ? `${from}${suffix}` : `${value}${suffix}`}
+              </span>
             </div>
-
-            <div className="grid grid-cols-2 gap-3">
-              {stats.map(({ value, counter, from, suffix, label, highlight }) => (
-                <div
-                  key={label}
-                  className={`stat-item flex flex-col gap-2 rounded-2xl border px-6 py-6 ${
-                    highlight
-                      ? "border-[#D4AF37]/20 bg-[#D4AF37]/8"
-                      : "border-white/8 bg-white/4"
-                  }`}
-                >
-                  <span
-                    className={`text-sm font-medium ${
-                      highlight ? "text-[#D4AF37]" : "text-white/40"
-                    }`}
-                  >
-                    {label}
-                  </span>
-                  <span
-                    className={`font-heading text-4xl font-bold ${
-                      highlight ? "text-[#D4AF37]" : "text-white"
-                    }`}
-                    {...(counter !== null
-                      ? {
-                          "data-counter": String(counter),
-                          "data-counter-from": String(from),
-                          "data-counter-suffix": suffix,
-                        }
-                      : {})}
-                  >
-                    {counter !== null ? `${from}${suffix}` : `${value}${suffix}`}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
+          ))}
         </div>
+
       </div>
     </section>
   );
