@@ -1,17 +1,18 @@
 import Tokenomics from "@/components/tokenomics";
+import PageHero from "@/components/page-hero";
 
 export default function TokenomicsPage() {
   return (
-    <div className="bg-[#08090D] pt-20">
-      <div className="bg-[#111318] px-6 pt-28 pb-16 lg:px-16">
-        <div className="mx-auto max-w-7xl flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Tokenomics</span>
-          <h1 className="font-heading text-5xl font-bold text-white md:text-6xl">Nothing hidden<br />in the numbers.</h1>
-          <p className="max-w-xl text-sm leading-relaxed text-white/45">
-            No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way — through the public bonding curve on Proof.
-          </p>
-        </div>
-      </div>
+    <div className="bg-[#08090D]">
+      <PageHero>
+        <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
+          <span className="page-hero-word block">Nothing hidden</span>
+          <span className="page-hero-word block text-[#D4AF37]">in the numbers.</span>
+        </h1>
+        <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
+          No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way — through the public bonding curve on Proof.
+        </p>
+      </PageHero>
       <Tokenomics />
     </div>
   );

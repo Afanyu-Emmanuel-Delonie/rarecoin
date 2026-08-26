@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, Copy, Check, AlertTriangle, Wallet, CircleDollarSign, ArrowLeftRight, ShieldCheck } from "lucide-react";
 import { RARE_CONFIG } from "@/lib/token-config";
+import PageHero from "@/components/page-hero";
 
 const wallets = [
   { name: "Phantom", href: "https://phantom.app" },
@@ -91,16 +92,16 @@ const steps = [
 
 export default function GetRarePage() {
   return (
-    <div className="bg-[#08090D] pt-20">
-      <div className="bg-[#111318] px-6 pt-28 pb-16 lg:px-16">
-        <div className="mx-auto max-w-7xl flex flex-col gap-6">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Get RARE</span>
-          <h1 className="font-heading text-5xl font-bold text-white md:text-6xl">Four steps.<br />No jargon assumed.</h1>
-          <p className="max-w-xl text-sm leading-relaxed text-white/45">
-            Wallet, funds, swap, verify. If you&rsquo;ve never touched Solana before, start at step one.
-          </p>
-        </div>
-      </div>
+    <div className="bg-[#08090D]">
+      <PageHero>
+        <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
+          <span className="page-hero-word block">Four steps.</span>
+          <span className="page-hero-word block text-[#D4AF37]">No jargon assumed.</span>
+        </h1>
+        <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
+          Wallet, funds, swap, verify. If you&rsquo;ve never touched Solana before, start at step one.
+        </p>
+      </PageHero>
 
       <div className="mx-auto max-w-7xl px-6 py-20 lg:px-16">
         <div className="mx-auto max-w-2xl flex flex-col gap-3">

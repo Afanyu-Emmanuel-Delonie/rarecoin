@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BreadcrumbSchema from "@/components/breadcrumb-schema";
+import PageHero from "@/components/page-hero";
 
 export const metadata: Metadata = {
   title: "Disclaimer & Risk Factors",
@@ -19,14 +20,14 @@ const riskFactors = [
 
 export default function LegalPage() {
   return (
-    <div className="bg-[#08090D] pt-20">
+    <div className="bg-[#08090D]">
       <BreadcrumbSchema items={[{ name: "Home", path: "/" }, { name: "Disclaimer & Risk Factors", path: "/legal" }]} />
-      <div className="bg-[#111318] px-6 pt-28 pb-16 lg:px-16">
-        <div className="mx-auto max-w-3xl flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Legal</span>
-          <h1 className="font-heading text-5xl font-bold text-white md:text-6xl">Disclaimer &<br />Risk Factors</h1>
-        </div>
-      </div>
+      <PageHero>
+        <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
+          <span className="page-hero-word block">Disclaimer &</span>
+          <span className="page-hero-word block text-[#D4AF37]">Risk Factors</span>
+        </h1>
+      </PageHero>
 
       <div className="mx-auto max-w-3xl px-6 py-24 lg:px-16">
         <div className="flex flex-col gap-16">

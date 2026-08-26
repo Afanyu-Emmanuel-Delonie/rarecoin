@@ -7,6 +7,7 @@ import { ArrowRight, X, MessageCircle, Mail, Check } from "lucide-react";
 import { submitContactForm } from "@/app/actions/sendNotification";
 import { initialContactFormState } from "@/app/actions/types";
 import { trackEvent } from "@/lib/analytics";
+import PageHero from "@/components/page-hero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,10 +27,6 @@ export default function ContactPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(".contact-word", { opacity: 0, y: 40, skewY: 3 }, { opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.12 });
-      tl.fromTo(".contact-sub",  { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
-
       gsap.fromTo(".contact-block",
         { opacity: 0, y: 36 },
         { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
@@ -45,29 +42,17 @@ export default function ContactPage() {
   }, []);
 
   return (
-    <div ref={pageRef} className="pt-20 bg-[#08090D]">
+    <div ref={pageRef} className="bg-[#08090D]">
 
-      {/* Hero */}
-      <section className="relative min-h-[70vh] overflow-hidden bg-[#08090D] flex flex-col justify-center">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-72"
-          style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, transparent 100%)" }} />
-        <div className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
-          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 68%)" }} />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
-          style={{ background: "linear-gradient(to bottom, transparent 0%, #08090D 100%)" }} />
-        <div className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
-          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 68%)" }} />
-
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
-          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
-            <span className="contact-word block">Get in touch</span>
-            <span className="contact-word block text-[#D4AF37]">with the team.</span>
-          </h1>
-          <p className="contact-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl lg:max-w-2xl">
-            For partnerships, press, or general questions. Community support is best handled in our public channels.
-          </p>
-        </div>
-      </section>
+      <PageHero>
+        <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
+          <span className="page-hero-word block">Get in touch</span>
+          <span className="page-hero-word block text-[#D4AF37]">with the team.</span>
+        </h1>
+        <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
+          For partnerships, press, or general questions. Community support is best handled in our public channels.
+        </p>
+      </PageHero>
 
       {/* Form + Socials */}
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
