@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Home, FileText, Compass, Coins, Users, HelpCircle } from "lucide-react";
+import { ArrowRight, Home, Compass, Coins, Users, HelpCircle } from "lucide-react";
 import ScrollAnimations from "@/components/scroll-animations";
 
 export const metadata: Metadata = {
@@ -24,9 +24,8 @@ function GhostCircles({ className }: { className?: string }) {
 const quickLinks = [
   { icon: Home,       label: "Home",        desc: "Back to the start",              href: "/" },
   { icon: Compass,    label: "About",       desc: "What Rarecoin stands for",        href: "/about" },
-  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/#tokenomics" },
+  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/tokenomics" },
   { icon: Users,      label: "Community",   desc: "Membership tiers and how to join", href: "/#community" },
-  { icon: FileText,   label: "White Paper", desc: "The full technical breakdown",    href: "/docs" },
   { icon: HelpCircle, label: "FAQ",         desc: "Legitimacy, contract, chain",     href: "/faq" },
 ];
 

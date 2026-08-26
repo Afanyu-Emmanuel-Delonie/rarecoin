@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "What blockchain is Rarecoin on?",
-    a: "Rarecoin launches on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure.",
+    a: "Rarecoin launched on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure.",
   },
   {
     q: "How does the burn mechanism work?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Is Rarecoin a DAO?",
-    a: "No. Rarecoin uses community signaling — non-binding polls weighted by wallet balance — rather than a binding on-chain governance contract. Section 12 of the white paper explains this distinction in full.",
+    a: "No. Rarecoin uses community signaling — non-binding polls weighted by wallet balance — rather than a binding on-chain governance contract. The Governance & Community section of the white paper explains this distinction in full.",
   },
   {
     q: "Where can I buy RARE?",

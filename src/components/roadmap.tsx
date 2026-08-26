@@ -321,7 +321,7 @@ export default function Roadmap() {
               className="road-cta group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
               Join the Community <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
             </Link>
-            <Link href="/#tokenomics"
+            <Link href="/tokenomics"
               className="road-cta inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
               View Tokenomics
             </Link>
@@ -408,7 +408,7 @@ export default function Roadmap() {
             <div className="flex flex-col gap-2">
               <span className="text-xs font-semibold uppercase tracking-widest text-white/25">Disclaimer</span>
               <p className="text-sm leading-relaxed text-white/40">
-                This roadmap represents the current intentions of the Rarecoin project. No phase constitutes a binding commitment or guarantee of delivery. Timing is indicative only and subject to change based on community activity, market conditions, and technical factors outside the team's control. Nothing here constitutes financial or investment advice.
+                This roadmap represents the current intentions of the Rarecoin project. No phase constitutes a binding commitment or guarantee of delivery. Timing is indicative only and subject to change based on community activity, market conditions, and technical factors outside the team&rsquo;s control. Nothing here constitutes financial or investment advice.
               </p>
             </div>
           </div>

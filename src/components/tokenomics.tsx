@@ -214,12 +214,12 @@ export default function Tokenomics() {
       <div className="mx-auto max-w-7xl px-6 pb-28 lg:px-16">
         <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-1">
-            <h3 className="font-heading text-xl font-bold text-white">Want the full picture?</h3>
-            <p className="text-sm text-white/35">The white paper covers every number in detail.</p>
+            <h3 className="font-heading text-xl font-bold text-white">Ready to hold some?</h3>
+            <p className="text-sm text-white/35">Every number above is live and on-chain — here&rsquo;s how to get RARE.</p>
           </div>
-          <Link href="/docs"
+          <Link href="/get-rare"
             className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-            Read White Paper
+            Get RARE
             <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
           </Link>
         </div>

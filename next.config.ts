@@ -9,7 +9,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/join", destination: "/get-rare", permanent: true },
-      { source: "/tokenomics", destination: "/#tokenomics", permanent: true },
       { source: "/roadmap", destination: "/#roadmap", permanent: true },
       { source: "/community", destination: "/#community", permanent: true },
       { source: "/utility", destination: "/#utility", permanent: true },

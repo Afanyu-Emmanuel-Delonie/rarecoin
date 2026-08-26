@@ -13,6 +13,7 @@ const links = [
   { label: "Tokenomics",  href: "/tokenomics" },
   { label: "Community",   href: "/#community" },
   { label: "Contact",     href: "/contact" },
+  
 ];
 
 function Logo() {

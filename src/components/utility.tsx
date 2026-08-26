@@ -126,7 +126,7 @@ export default function Utility() {
             </h2>
           </div>
           <p className="max-w-sm text-sm leading-relaxed text-white/40 md:text-right">
-            Every utility case works without a custom smart contract available from day one or shortly after launch.
+            Every utility case works without a custom smart contract available from day one.
           </p>
         </div>
 

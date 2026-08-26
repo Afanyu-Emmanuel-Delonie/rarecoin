@@ -32,10 +32,9 @@ const footerLinks = [
   {
     heading: "Token",
     links: [
-      { label: "Tokenomics",  href: "/#tokenomics" },
+      { label: "Tokenomics",  href: "/tokenomics" },
       { label: "Utility",     href: "/#utility" },
       { label: "Roadmap",     href: "/#roadmap" },
-      { label: "White Paper", href: "/docs" },
     ],
   },
   {
@@ -49,8 +48,8 @@ const footerLinks = [
   {
     heading: "Legal",
     links: [
-      { label: "Disclaimer",   href: "/docs#disclaimer" },
-      { label: "Risk Factors", href: "/docs#risks" },
+      { label: "Disclaimer",   href: "/legal#disclaimer" },
+      { label: "Risk Factors", href: "/legal#risk-factors" },
       { label: "FAQ",          href: "/faq" },
       { label: "About",        href: "/about" },
     ],
