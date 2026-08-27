@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     q: "Is Rarecoin a DAO?",
-    a: "No. Rarecoin uses community signaling — non-binding polls weighted by wallet balance — rather than a binding on-chain governance contract. The Governance & Community section of the white paper explains this distinction in full.",
+    a: "No. Rarecoin uses community signaling: non-binding polls weighted by wallet balance, rather than a binding on-chain governance contract.",
   },
   {
     q: "Where can I buy RARE?",
-    a: "RARE is live. See our Get RARE guide for the current venue and step-by-step instructions — it always reflects whether the bonding curve has graduated yet. Always verify the official contract address printed there before transacting.",
+    a: "RARE is live. See our Get RARE guide for the current venue and step-by-step instructions. It always reflects whether the bonding curve has graduated yet. Always verify the official contract address printed there before transacting.",
   },
 ];
 

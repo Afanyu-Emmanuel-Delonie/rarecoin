@@ -55,7 +55,7 @@ export default function NotFound() {
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-10">
 
         <span data-reveal className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">
-          404 — Off the bonding curve
+          404 · Off the bonding curve
         </span>
 
         <h1

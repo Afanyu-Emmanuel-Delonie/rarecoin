@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import { Syne, Inter } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import Nav from "@/components/nav";
 import Footer from "@/components/footer";
 import BackToTop from "@/components/back-to-top";
@@ -21,11 +22,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://rarecoin.io"),
   title: {
-    default: "Rarecoin (RARE) — Fair-Launch Token on Proof, Solana",
+    default: "Rarecoin (RARE): Fair-Launch Token on Proof, Solana",
     template: "%s | Rarecoin (RARE) on Proof",
   },
   description:
-    "Rarecoin (RARE) is a fixed-supply, fair-launch SPL token on Solana, launched through Proof's bonding curve  no presale, no team allocation, 100% public from the first trade.",
+    "Rarecoin (RARE) is a fixed-supply, fair-launch SPL token on Solana, launched through Proof's bonding curve. No presale, no team allocation, 100% public from the first trade.",
   keywords: ["Rarecoin", "RARE token", "Rarecoin Proof", "Rarecoin fair launch", "RARE Solana", "Proof bonding curve", "fair launch token", "community token", "SPL token"],
   alternates: {
     canonical: "/",
@@ -42,23 +43,23 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://rarecoin.io",
     siteName: "Rarecoin",
-    title: "Rarecoin (RARE) — Own the Rare. Shape the Future.",
+    title: "Rarecoin (RARE): Own the Rare. Shape the Future.",
     description:
-      "A fixed-supply, community-first token on Solana, launched fairly through Proof. No presale, no team allocation — 100% public from the first trade.",
+      "A fixed-supply, community-first token on Solana, launched fairly through Proof. No presale, no team allocation, 100% public from the first trade.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Rarecoin (RARE) — Own the Rare. Shape the Future.",
+        alt: "Rarecoin (RARE): Own the Rare. Shape the Future.",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rarecoin (RARE) — Own the Rare. Shape the Future.",
+    title: "Rarecoin (RARE): Own the Rare. Shape the Future.",
     description:
-      "A fixed-supply, community-first token on Solana, launched fairly through Proof. No presale, no team allocation — 100% public from the first trade.",
+      "A fixed-supply, community-first token on Solana, launched fairly through Proof. No presale, no team allocation, 100% public from the first trade.",
     images: ["/og-image.png"],
     creator: "@TherealRarecoin",
     site: "@TherealRarecoin",
@@ -102,6 +103,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <BackToTop />
         {children}
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

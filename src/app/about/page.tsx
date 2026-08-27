@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight } from "lucide-react";
+import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import ScrollAnimations from "@/components/scroll-animations";
 import PageHero from "@/components/page-hero";
@@ -191,13 +191,20 @@ export default function AboutPage() {
           <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col gap-1">
               <h3 className="font-heading text-xl font-bold text-white">Ready to be part of it?</h3>
-              <p className="text-sm text-white/35">RARE is live on Solana — 100% public, from the first trade.</p>
+              <p className="text-sm text-white/35">RARE is live on Solana, 100% public from the first trade.</p>
             </div>
-            <Link href="/get-rare"
-              className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-              Get RARE
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <a href="/Rarecoin_White_paper.pdf" download
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
+                <Download size={15} />
+                Download Whitepaper
+              </a>
+              <Link href="/get-rare"
+                className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
+                Get RARE
+                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

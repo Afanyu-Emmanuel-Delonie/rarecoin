@@ -29,7 +29,7 @@ const phases = [
     label: "Launch",
     status: "active",
     period: "Now",
-    summary: "The token goes live on Proof's bonding curve. The first real community interactions begin — tipping, signaling, and the founding ambassador cohort.",
+    summary: "The token goes live on Proof's bonding curve. The first real community interactions begin: tipping, signaling, and the founding ambassador cohort.",
     items: [
       "Token launch on Proof bonding curve",
       "Peer-to-peer tipping live",
@@ -37,7 +37,7 @@ const phases = [
       "Founding ambassador recruitment",
       "Creator fee share terms published",
     ],
-    context: "This is the current phase. RARE is live on the bonding curve. Early holders are the founding community — the people who shape what comes next.",
+    context: "This is the current phase. RARE is live on the bonding curve. Early holders are the founding community, the people who shape what comes next.",
   },
   {
     number: "03",
@@ -52,7 +52,7 @@ const phases = [
       "Ambassador Program formalised",
       "Content & Culture Hub launch",
     ],
-    context: "Graduation happens automatically when the bonding curve hits its target. Timing depends on trading volume — not a team decision.",
+    context: "Graduation happens automatically when the bonding curve hits its target. Timing depends on trading volume, not a team decision.",
   },
   {
     number: "04",
@@ -67,7 +67,7 @@ const phases = [
       "Additional exchange visibility",
       "Contributor rewards expansion",
     ],
-    context: "Timing here is intentionally flexible. The community's activity level determines how fast this phase arrives — not a fixed calendar date.",
+    context: "Timing here is intentionally flexible. The community's activity level determines how fast this phase arrives, not a fixed calendar date.",
   },
   {
     number: "05",
@@ -268,7 +268,7 @@ function MobilePhaseCards() {
       </div>
 
       <p className="text-center text-xs text-white/30">
-        {current + 1} of {phases.length} — {phases[current].label}
+        {current + 1} of {phases.length} · {phases[current].label}
       </p>
     </div>
   );
@@ -314,7 +314,7 @@ export default function Roadmap() {
             <span className="road-word block text-[#D4AF37]">One direction.</span>
           </h1>
           <p className="road-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl lg:max-w-2xl">
-            Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee — and every milestone is disclosed publicly.
+            Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee, and every milestone is disclosed publicly.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link href="/#community"

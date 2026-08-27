@@ -1,11 +1,10 @@
 // Single source of truth for RARE's live acquisition details, referenced
-// by the homepage trust bar and the /get-rare page. Nothing below is real
-// yet — fill these in once they're known, the UI treats an empty
-// contractAddress as "not live yet" and hides the swap links accordingly.
+// by the homepage trust bar and the /get-rare page.
 export const RARE_CONFIG = {
-  contractAddress: "",
-  // Flip to true once the bonding curve graduates to a DEX pool.
-  graduated: false,
+  contractAddress: "jX6565vyY3WJAVmwsXFNMVaxM9vQaD9SvbRGsD3pooL",
+  // RARE has graduated to a DEX pool, so swaps route through Jupiter rather than Proof's bonding curve.
+  graduated: true,
   proofUrl: "",
-  jupiterUrl: "",
+  jupiterUrl: "https://jup.ag/swap/SOL-jX6565vyY3WJAVmwsXFNMVaxM9vQaD9SvbRGsD3pooL",
+  dexScreenerUrl: "https://dexscreener.com/solana/BzMFRS7NkpGC1V7t8T9crtT8kJMmxS2SLBZqvPdyaVRj",
 };

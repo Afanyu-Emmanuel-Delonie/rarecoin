@@ -10,7 +10,7 @@ export default function CtaBand() {
           <span className="text-[#D4AF37]">One direction.</span>
         </h2>
         <p className="text-sm leading-relaxed text-white/45 md:text-base">
-          Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee — and every milestone is disclosed publicly.
+          Actual timing depends on community activity and market conditions. Each phase is a stated intention, not a guarantee, and every milestone is disclosed publicly.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link

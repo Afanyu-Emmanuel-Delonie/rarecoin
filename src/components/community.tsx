@@ -122,7 +122,7 @@ export default function Community() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Membership</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">Your tier, your perks.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-white/40">
-              Tiers are determined by your on-chain RARE balance — no sign-up, no application. Hold more, unlock more.
+              Tiers are determined by your on-chain RARE balance, no sign-up, no application. Hold more, unlock more.
             </p>
           </div>
 

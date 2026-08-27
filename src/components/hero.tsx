@@ -11,7 +11,7 @@ export default function Hero() {
       </h1>
 
       <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
-        A fixed-supply, community-first token on Solana. No presale, no team allocation — 100% public from the first trade.
+        A fixed-supply, community-first token on Solana. No presale, no team allocation, 100% public from the first trade.
       </p>
 
       <div className="flex flex-wrap justify-center gap-3">

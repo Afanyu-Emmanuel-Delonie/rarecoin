@@ -10,7 +10,7 @@ export default function TokenomicsPage() {
           <span className="page-hero-word block text-[#D4AF37]">in the numbers.</span>
         </h1>
         <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
-          No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way — through the public bonding curve on Proof.
+          No allocation pools, no vesting cliffs, no team tranche. Every RARE token enters circulation the same way, through the public bonding curve on Proof.
         </p>
       </PageHero>
       <Tokenomics />

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { TrendingUp, Wallet, Flame, ArrowRight, Lock, Zap, ShieldCheck, BarChart3 } from "lucide-react";
+import { TrendingUp, Wallet, Flame, ArrowRight, Lock, Zap, ShieldCheck, BarChart3, Download } from "lucide-react";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -16,12 +16,12 @@ const stats = [
 ];
 
 const comparison = [
-  { field: "Team allocation",       typical: "5–15% set aside pre-launch",    rarecoin: "None zero" },
+  { field: "Team allocation",       typical: "5–15% set aside pre-launch",    rarecoin: "None, zero" },
   { field: "Vesting schedule",      typical: "Cliff + 1–4yr linear unlock",   rarecoin: "Not applicable" },
   { field: "Presale / private round", typical: "Common, often discounted",    rarecoin: "None" },
   { field: "Initial liquidity",     typical: "Team or investor funded",      rarecoin: "Formed by bonding curve" },
-  { field: "Supply at launch",      typical: "Partial rest locked/vesting", rarecoin: "100% tradable from trade one" },
-  { field: "Minting after launch",  typical: "Sometimes possible via governance", rarecoin: "Impossible no mint function" },
+  { field: "Supply at launch",      typical: "Partial, rest locked/vesting", rarecoin: "100% tradable from trade one" },
+  { field: "Minting after launch",  typical: "Sometimes possible via governance", rarecoin: "Impossible, no mint function" },
 ];
 
 const feeFlow = [
@@ -34,7 +34,7 @@ const explainers = [
   {
     icon: Lock,
     title: "Why a hard cap matters",
-    body: "Most tokens reserve the right to mint more. RARE has no mint function the 1,000,000,000 cap is enforced at the protocol level, not by a promise. No governance vote, no team decision can change it.",
+    body: "Most tokens reserve the right to mint more. RARE has no mint function. The 1,000,000,000 cap is enforced at the protocol level, not by a promise. No governance vote, no team decision can change it.",
   },
   {
     icon: Zap,
@@ -49,7 +49,7 @@ const explainers = [
   {
     icon: BarChart3,
     title: "What graduation means",
-    body: "When the bonding curve reaches its target, RARE graduates to a decentralised exchange. Liquidity is locked automatically by Proof's infrastructure no manual step, no team control over the pool.",
+    body: "When the bonding curve reaches its target, RARE graduates to a decentralised exchange. Liquidity is locked automatically by Proof's infrastructure. No manual step, no team control over the pool.",
   },
 ];
 
@@ -118,7 +118,7 @@ export default function Tokenomics() {
             <span className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">Supply Distribution</span>
             <h2 className="font-heading text-4xl font-bold text-white md:text-5xl">The full circle is yours.</h2>
             <p className="max-w-xl text-sm leading-relaxed text-white/40">
-              There is no pie chart with a team slice, an investor slice, or a treasury slice. The entire supply enters through one channel the public bonding curve.
+              There is no pie chart with a team slice, an investor slice, or a treasury slice. The entire supply enters through one channel: the public bonding curve.
             </p>
           </div>
 
@@ -126,7 +126,7 @@ export default function Tokenomics() {
             <div className="tok-graphic">
               <DistributionGraphic />
               <p className="mt-4 max-w-[220px] mx-auto text-center text-xs leading-relaxed text-white/30">
-                No team, presale, or treasury slice the full circle is the public curve.
+                No team, presale, or treasury slice. The full circle is the public curve.
               </p>
             </div>
 
@@ -215,13 +215,20 @@ export default function Tokenomics() {
         <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-1">
             <h3 className="font-heading text-xl font-bold text-white">Ready to hold some?</h3>
-            <p className="text-sm text-white/35">Every number above is live and on-chain — here&rsquo;s how to get RARE.</p>
+            <p className="text-sm text-white/35">Every number above is live and on-chain. Here&rsquo;s how to get RARE.</p>
           </div>
-          <Link href="/get-rare"
-            className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-            Get RARE
-            <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-          </Link>
+          <div className="flex flex-wrap gap-3">
+            <a href="/Rarecoin_White_paper.pdf" download
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
+              <Download size={15} />
+              Download Whitepaper
+            </a>
+            <Link href="/get-rare"
+              className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
+              Get RARE
+              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+            </Link>
+          </div>
         </div>
       </div>
 

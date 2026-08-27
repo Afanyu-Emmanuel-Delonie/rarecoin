@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import type { ReactNode } from "react";
 
-export default function PageHero({ children }: { children: ReactNode }) {
+export default function PageHero({ children, compact = false }: { children: ReactNode; compact?: boolean }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -20,13 +20,17 @@ export default function PageHero({ children }: { children: ReactNode }) {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-140 md:min-h-160 overflow-hidden bg-[#08090D] flex flex-col justify-center"
+      className={`relative overflow-hidden bg-[#08090D] flex flex-col justify-center ${compact ? "" : "sm:min-h-140 md:min-h-160"}`}
     >
       <div
         className="pointer-events-none absolute inset-x-0 top-0 h-72"
         style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.05) 0%, transparent 100%)" }}
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-5 px-5 py-20 text-center sm:gap-6 sm:px-6 sm:py-24 md:py-28 lg:gap-7 lg:px-10">
+      <div
+        className={`relative z-10 mx-auto flex w-full max-w-3xl flex-col items-center gap-5 px-5 text-center sm:gap-6 sm:px-6 lg:gap-7 lg:px-10 ${
+          compact ? "pt-28 pb-10 sm:pt-32 sm:pb-12" : "pt-28 pb-8 sm:py-24 md:py-28"
+        }`}
+      >
         {children}
       </div>
     </section>

@@ -20,7 +20,7 @@ function ContractAddress() {
     return (
       <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/4 px-5 py-4">
         <AlertTriangle size={16} className="shrink-0 text-white/30" />
-        <p className="text-sm text-white/40">Contract address not yet published here — check @TherealRarecoin before you transact.</p>
+        <p className="text-sm text-white/40">Contract address not yet published here, check @TherealRarecoin before you transact.</p>
       </div>
     );
   }
@@ -68,7 +68,7 @@ const steps = [
     icon: Wallet,
     num: "01",
     title: "Get a wallet",
-    desc: "A non-custodial Solana wallet you control. Any of the three below works — install the browser extension or mobile app and set it up in a couple of minutes.",
+    desc: "A non-custodial Solana wallet you control. Any of the three below works: install the browser extension or mobile app and set it up in a couple of minutes.",
   },
   {
     icon: CircleDollarSign,
@@ -80,7 +80,7 @@ const steps = [
     icon: ArrowLeftRight,
     num: "03",
     title: "Swap for RARE",
-    desc: "Paste or confirm the official contract address, then swap. Where you swap depends on whether the bonding curve has graduated to a DEX yet — the link below always points to the current venue.",
+    desc: "Paste or confirm the official contract address, then swap. Where you swap depends on whether the bonding curve has graduated to a DEX yet; the link below always points to the current venue.",
   },
   {
     icon: ShieldCheck,
@@ -93,7 +93,7 @@ const steps = [
 export default function GetRarePage() {
   return (
     <div className="bg-[#08090D]">
-      <PageHero>
+      <PageHero compact>
         <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
           <span className="page-hero-word block">Four steps.</span>
           <span className="page-hero-word block text-[#D4AF37]">No jargon assumed.</span>
@@ -103,13 +103,24 @@ export default function GetRarePage() {
         </p>
       </PageHero>
 
-      <div className="mx-auto max-w-7xl px-6 py-20 lg:px-16">
+      <div className="mx-auto max-w-7xl px-6 pt-4 pb-20 lg:px-16">
         <div className="mx-auto max-w-2xl flex flex-col gap-3">
           <span className="text-xs font-semibold uppercase tracking-widest text-white/30">Official contract address</span>
           <ContractAddress />
           <p className="text-xs leading-relaxed text-white/30">
-            A separate, unaffiliated token also uses the Rarecoin name on Solana. Always match the address above — never trust one shared in a DM or an unofficial group.
+            A separate, unaffiliated token also uses the Rarecoin name on Solana. Always match the address above, and never trust one shared in a DM or an unofficial group.
           </p>
+          {RARE_CONFIG.dexScreenerUrl && (
+            <a
+              href={RARE_CONFIG.dexScreenerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-fit items-center gap-1.5 text-xs font-semibold text-white/50 transition-colors hover:text-[#D4AF37]"
+            >
+              Verify the contract and liquidity on DexScreener
+              <ArrowRight size={12} />
+            </a>
+          )}
         </div>
 
         <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-4">
