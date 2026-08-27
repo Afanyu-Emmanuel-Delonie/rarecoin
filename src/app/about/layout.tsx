@@ -4,7 +4,7 @@ import BreadcrumbSchema from "@/components/breadcrumb-schema";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Rarecoin (RARE) is built on one principle: scarcity creates value. A fair-launch, community-owned token on Solana launched through Proof — no presale, no team allocation.",
+    "Rarecoin (RARE) is built on one principle: scarcity creates value. A fair-launch, community-owned token on Solana launched through Proof. No presale, no team allocation.",
   alternates: { canonical: "/about" },
 };
 

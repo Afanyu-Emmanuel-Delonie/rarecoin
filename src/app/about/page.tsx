@@ -3,9 +3,10 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight } from "lucide-react";
+import { Eye, Target, Zap, Shield, Users, TrendingDown, Lock, ArrowRight, Download } from "lucide-react";
 import Link from "next/link";
 import ScrollAnimations from "@/components/scroll-animations";
+import PageHero from "@/components/page-hero";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -47,12 +48,6 @@ export default function AboutPage() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-      tl.fromTo(".about-eyebrow", { opacity: 0, y: 12 }, { opacity: 1, y: 0, duration: 0.5 });
-      tl.fromTo(".about-word", { opacity: 0, y: 40, skewY: 3 }, { opacity: 1, y: 0, skewY: 0, duration: 0.7, stagger: 0.12 }, "-=0.2");
-      tl.fromTo(".about-sub", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.3");
-      tl.fromTo(".about-cta", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.1 }, "-=0.3");
-
       gsap.fromTo(".about-block",
         { opacity: 0, y: 36 },
         { opacity: 1, y: 0, duration: 0.65, stagger: 0.1, ease: "power3.out",
@@ -73,43 +68,29 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div ref={pageRef} className="pt-20 bg-[#08090D]">
+    <div ref={pageRef} className="bg-[#08090D]">
       <ScrollAnimations />
 
-      {/* Hero */}
-      <section className="relative min-h-screen overflow-hidden bg-[#08090D] flex flex-col justify-center">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-72"
-          style={{ background: "linear-gradient(to bottom, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, transparent 100%)" }} />
-        <div className="pointer-events-none absolute right-0 top-0 h-105 w-105 translate-x-1/4 -translate-y-1/4 rounded-full sm:h-150 sm:w-150 xl:h-190 xl:w-190"
-          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.07) 0%, transparent 68%)" }} />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 z-10"
-          style={{ background: "linear-gradient(to bottom, transparent 0%, #08090D 100%)" }} />
-        <div className="pointer-events-none absolute left-0 bottom-0 h-80 w-80 -translate-x-1/3 translate-y-1/3 rounded-full sm:h-110 sm:w-110 xl:h-140 xl:w-140"
-          style={{ background: "radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 68%)" }} />
-
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-5 px-5 py-16 text-center sm:gap-6 sm:px-6 sm:py-20 md:py-28 lg:gap-7 lg:px-10 lg:py-32 xl:px-16 xl:py-40">
-          <h1 className="font-heading text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl sm:leading-[1.05] md:text-6xl lg:text-7xl">
-            <span className="about-word block">Built on one principle.</span>
-            <span className="about-word block text-[#D4AF37]">Scarcity creates value.</span>
-          </h1>
-
-          <p className="about-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl lg:max-w-2xl">
-            An honest attempt at what a fair-launch community token can actually deliver and transparent about what it cannot.
-          </p>
-
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href="/docs"
-              className="about-cta group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-              Read White Paper
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
-            <Link href="/join"
-              className="about-cta inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
-              Join Early
-            </Link>
-          </div>
+      <PageHero>
+        <h1 className="font-heading text-3xl font-bold leading-[1.1] tracking-tight text-white sm:text-4xl sm:leading-[1.05] md:text-5xl lg:text-6xl">
+          <span className="page-hero-word block">Built on one principle.</span>
+          <span className="page-hero-word block text-[#D4AF37]">Scarcity creates value.</span>
+        </h1>
+        <p className="page-hero-sub max-w-sm text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base md:text-lg lg:max-w-2xl">
+          An honest attempt at what a fair-launch community token can actually deliver, and transparent about what it cannot.
+        </p>
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link href="/get-rare"
+            className="page-hero-cta group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
+            Get RARE
+            <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+          </Link>
+          <Link href="/#find-us"
+            className="page-hero-cta inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
+            Join the Community
+          </Link>
         </div>
-      </section>
+      </PageHero>
 
       {/* Vision & Mission */}
       <div className="mx-auto max-w-7xl px-6 py-28 lg:px-16">
@@ -210,13 +191,20 @@ export default function AboutPage() {
           <div className="flex flex-col gap-4 rounded-3xl bg-[#111318] border border-white/6 p-10 md:flex-row md:items-center md:justify-between">
             <div className="flex flex-col gap-1">
               <h3 className="font-heading text-xl font-bold text-white">Ready to be part of it?</h3>
-              <p className="text-sm text-white/35">Get notified the moment RARE goes live.</p>
+              <p className="text-sm text-white/35">RARE is live on Solana, 100% public from the first trade.</p>
             </div>
-            <Link href="/join"
-              className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
-              Join Early
-              <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
-            </Link>
+            <div className="flex flex-wrap gap-3">
+              <a href="/Rarecoin_White_paper.pdf" download
+                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10">
+                <Download size={15} />
+                Download Whitepaper
+              </a>
+              <Link href="/get-rare"
+                className="group inline-flex w-fit items-center gap-2 rounded-full bg-[#D4AF37] px-6 py-3 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3">
+                Get RARE
+                <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

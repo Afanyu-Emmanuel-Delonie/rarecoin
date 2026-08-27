@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     q: "What blockchain is Rarecoin on?",
-    a: "Rarecoin launches on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure.",
+    a: "Rarecoin launched on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure.",
   },
   {
     q: "How does the burn mechanism work?",
@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     q: "Is Rarecoin a DAO?",
-    a: "No. Rarecoin uses community signaling — non-binding polls weighted by wallet balance — rather than a binding on-chain governance contract. Section 12 of the white paper explains this distinction in full.",
+    a: "No. Rarecoin uses community signaling: non-binding polls weighted by wallet balance, rather than a binding on-chain governance contract.",
   },
   {
     q: "Where can I buy RARE?",
-    a: "RARE launches on Proof's bonding curve. After graduation it will be available on a decentralized exchange. Always verify the official contract address through an authoritative Rarecoin channel before transacting.",
+    a: "RARE is live. See our Get RARE guide for the current venue and step-by-step instructions. It always reflects whether the bonding curve has graduated yet. Always verify the official contract address printed there before transacting.",
   },
 ];
 
@@ -145,17 +145,17 @@ export default function CtaSection() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href="/join"
+                href="/get-rare"
                 className="group inline-flex items-center gap-2 rounded-full bg-[#D4AF37] px-7 py-3.5 text-sm font-semibold text-[#08090D] transition-all hover:bg-[#F0D77A] hover:gap-3"
               >
-                Join RARE Early
+                Get RARE
                 <ArrowRight size={15} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
-                href="/docs"
+                href="#find-us"
                 className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/6 px-7 py-3.5 text-sm font-semibold text-white/80 transition-all hover:border-white/30 hover:bg-white/10"
               >
-                White Paper
+                Join the Community
               </Link>
             </div>
           </div>

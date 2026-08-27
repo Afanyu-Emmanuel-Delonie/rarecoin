@@ -11,8 +11,9 @@ const links = [
   { label: "Home",        href: "/" },
   { label: "About",       href: "/about" },
   { label: "Tokenomics",  href: "/tokenomics" },
-  { label: "Community",   href: "/#find-us" },
   { label: "Contact",     href: "/contact" },
+  { label: "Docs",        href: "/docs" },
+  { label: "Community",   href: "/#community" },
 ];
 
 function Logo() {

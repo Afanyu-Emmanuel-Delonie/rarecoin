@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   async redirects() {
     return [
-      { source: "/tokenomics", destination: "/#tokenomics", permanent: true },
+      { source: "/join", destination: "/get-rare", permanent: true },
       { source: "/roadmap", destination: "/#roadmap", permanent: true },
       { source: "/community", destination: "/#community", permanent: true },
       { source: "/utility", destination: "/#utility", permanent: true },

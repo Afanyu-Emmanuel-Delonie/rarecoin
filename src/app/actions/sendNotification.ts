@@ -49,7 +49,7 @@ export async function submitContactForm(
         from: process.env.RESEND_FROM_EMAIL || "Rarecoin <onboarding@resend.dev>",
         to: adminEmail,
         cc: (process.env.ADMIN_CC ?? "").split(",").map((s) => s.trim()).filter(Boolean),
-        subject: `New contact message: ${subject || "General"} — ${name}`,
+        subject: `New contact message: ${subject || "General"} from ${name}`,
         html: `<p><strong>${name}</strong> &lt;<a href="mailto:${email}">${email}</a>&gt;</p><p><strong>Subject:</strong> ${subject || "General"}</p><hr/><p>${message.replace(/\n/g, "<br/>")}</p>`,
       });
     }

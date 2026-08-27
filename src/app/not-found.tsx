@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Home, FileText, Compass, Coins, Users, HelpCircle } from "lucide-react";
+import { ArrowRight, Home, Compass, Coins, Users, HelpCircle } from "lucide-react";
 import ScrollAnimations from "@/components/scroll-animations";
 
 export const metadata: Metadata = {
@@ -24,9 +24,8 @@ function GhostCircles({ className }: { className?: string }) {
 const quickLinks = [
   { icon: Home,       label: "Home",        desc: "Back to the start",              href: "/" },
   { icon: Compass,    label: "About",       desc: "What Rarecoin stands for",        href: "/about" },
-  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/#tokenomics" },
-  { icon: Users,      label: "Community",   desc: "Tiers and ambassador rewards",    href: "/#community" },
-  { icon: FileText,   label: "White Paper", desc: "The full technical breakdown",    href: "/docs" },
+  { icon: Coins,      label: "Tokenomics",  desc: "Supply, burns, fee splits",       href: "/tokenomics" },
+  { icon: Users,      label: "Community",   desc: "Membership tiers and how to join", href: "/#community" },
   { icon: HelpCircle, label: "FAQ",         desc: "Legitimacy, contract, chain",     href: "/faq" },
 ];
 
@@ -56,7 +55,7 @@ export default function NotFound() {
       <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-5 py-16 text-center sm:px-6 sm:py-20 lg:px-10">
 
         <span data-reveal className="text-xs font-semibold uppercase tracking-widest text-[#D4AF37]">
-          404 — Off the bonding curve
+          404 · Off the bonding curve
         </span>
 
         <h1
@@ -68,7 +67,7 @@ export default function NotFound() {
         </h1>
 
         <p data-reveal data-reveal-delay="0.2" className="max-w-md text-sm leading-relaxed text-white/45 sm:max-w-xl sm:text-base">
-          The page you're looking for doesn't exist, moved, or the link was mistyped. Everything real on Rarecoin lives at one of these:
+          The page you&rsquo;re looking for doesn&rsquo;t exist, moved, or the link was mistyped. Everything real on Rarecoin lives at one of these:
         </p>
 
         <div data-reveal data-reveal-delay="0.3" className="flex flex-wrap justify-center gap-3">

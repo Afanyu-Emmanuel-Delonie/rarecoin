@@ -4,18 +4,18 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  { q: "Is Rarecoin (RARE) the same as the $RARECOIN token on Solana (rarecoinonsol.xyz)?", a: "No. There is a separate, unaffiliated project also using the name $RARECOIN on Solana. It is not connected to us in any way — different team, different contract, different launch. Always verify the official contract address through our channels (@TherealRarecoin) before transacting, and don't assume two projects with similar names are related." },
+  { q: "Is Rarecoin (RARE) the same as the $RARECOIN token on Solana (rarecoinonsol.xyz)?", a: "No. There is a separate, unaffiliated project also using the name $RARECOIN on Solana. It is not connected to us in any way: different team, different contract, different launch. Always verify the official contract address through our channels (@TherealRarecoin) before transacting, and don't assume two projects with similar names are related." },
   { q: "Is Rarecoin related to SuperRare's RARE governance token?", a: "No. SuperRare's RARE is an established governance token for the SuperRare NFT platform, listed on major exchanges. Rarecoin is an independent, unrelated fair-launch project on Solana. We have no affiliation, partnership, or shared team with SuperRare." },
   { q: "Is there a presale or team allocation?", a: "No. Every RARE token enters circulation through the public bonding curve on Proof. There is no presale, no private round, and no team tranche set aside before launch." },
-  { q: "What blockchain is Rarecoin on?", a: "Rarecoin launches on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure." },
+  { q: "What blockchain is Rarecoin on?", a: "Rarecoin launched on Solana as a standard SPL token, using Proof's bonding-curve fair-launch infrastructure." },
   { q: "How does the burn mechanism work?", a: "A disclosed share of the trading fees earned by the creator wallet on Proof is used to buy back RARE on the open market and send it to a verifiable burn address. Burn events are announced in advance." },
   { q: "What are backer wallets?", a: "If any project contributors hold RARE, those wallets are publicly disclosed so the community can monitor their activity on-chain. This is a transparency commitment, not a lockup." },
-  { q: "Is Rarecoin a DAO?", a: "No. Rarecoin uses community signaling — non-binding polls weighted by wallet balance — rather than a binding on-chain governance contract. Section 12 of the white paper explains this distinction in full." },
-  { q: "Where can I buy RARE?", a: "RARE launches on Proof's bonding curve. After graduation it will be available on a decentralized exchange. Always verify the official contract address through an authoritative Rarecoin channel before transacting." },
-  { q: "What is the maximum supply?", a: "1,000,000,000 RARE. This is a hard cap — there is no minting function and no mechanism to increase supply after launch." },
+  { q: "Is Rarecoin a DAO?", a: "No. Rarecoin uses community signaling: non-binding polls weighted by wallet balance, rather than a binding on-chain governance contract." },
+  { q: "Where can I buy RARE?", a: "RARE is live. See our Get RARE guide (linked in the nav) for the current venue and step-by-step instructions. It always reflects whether the bonding curve has graduated yet. Always verify the official contract address printed there before transacting." },
+  { q: "What is the maximum supply?", a: "1,000,000,000 RARE. This is a hard cap. There is no minting function and no mechanism to increase supply after launch." },
   { q: "How are contributor rewards funded?", a: "Through a disclosed share of the trading fees the creator wallet earns on Proof. The exact split is published before launch and updated publicly if it changes." },
   { q: "What happens after graduation?", a: "When RARE reaches Proof's graduation threshold, accumulated liquidity migrates to a decentralized exchange. The specific mechanics are determined by Proof and will be disclosed to the community at launch." },
-  { q: "How do I verify the official contract address?", a: "Always check an authoritative Rarecoin channel — our official X account (@TherealRarecoin) or website — before every transaction. Never trust contract addresses shared in DMs or unofficial groups." },
+  { q: "How do I verify the official contract address?", a: "Always check an authoritative Rarecoin channel (our official X account, @TherealRarecoin, or website) before every transaction. Never trust contract addresses shared in DMs or unofficial groups." },
 ];
 
 const faqJsonLd = {

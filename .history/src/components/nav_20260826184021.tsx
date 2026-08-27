@@ -11,7 +11,7 @@ const links = [
   { label: "Home",        href: "/" },
   { label: "About",       href: "/about" },
   { label: "Tokenomics",  href: "/tokenomics" },
-  { label: "Community",   href: "/#find-us" },
+  { label: "Community",   href: "/#community" },
   { label: "Contact",     href: "/contact" },
 ];
 

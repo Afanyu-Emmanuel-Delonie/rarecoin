@@ -5,21 +5,25 @@ import { usePathname, useRouter } from "next/navigation";
 import { trackEvent } from "./analytics";
 
 /**
- * Next's <Link> doesn't reliably re-jump to a "/#id" hash when you're already
- * on that route (only the hash changes, not the pathname), so scrolling has
- * to be driven manually. This hook also picks up the hash after a cross-page
- * navigation lands on "/", since the target section isn't guaranteed to be
- * scrolled-to by the time the browser processes the fragment.
+ * Drives scroll position on every route change: land on a hash (e.g. "/#find-us")
+ * and it scrolls to that section; land anywhere else and it resets to the top.
+ * Needed because Next's <Link> doesn't reliably re-jump to a hash when you're
+ * already on that route (only the hash changes, not the pathname), and cross-page
+ * navigation doesn't guarantee the target section exists yet when the browser
+ * first processes the fragment.
  */
 export function useHashScrollOnLoad() {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname !== "/" || !window.location.hash) return;
-    const id = window.location.hash.slice(1);
-    requestAnimationFrame(() => {
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    });
+    if (window.location.hash) {
+      const id = window.location.hash.slice(1);
+      requestAnimationFrame(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }, [pathname]);
 }
 

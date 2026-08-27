@@ -32,16 +32,14 @@ const footerLinks = [
   {
     heading: "Token",
     links: [
-      { label: "Tokenomics",  href: "/#tokenomics" },
+      { label: "Tokenomics",  href: "/tokenomics" },
       { label: "Utility",     href: "/#utility" },
       { label: "Roadmap",     href: "/#roadmap" },
-      { label: "White Paper", href: "/docs" },
     ],
   },
   {
     heading: "Community",
     links: [
-      { label: "Ambassador Program", href: "/#community" },
       { label: "Membership Tiers",   href: "/#community" },
       { label: "Contributor Rewards",href: "/#utility" },
       { label: "Contact",            href: "/contact" },
@@ -50,8 +48,8 @@ const footerLinks = [
   {
     heading: "Legal",
     links: [
-      { label: "Disclaimer",   href: "/docs#disclaimer" },
-      { label: "Risk Factors", href: "/docs#risks" },
+      { label: "Disclaimer",   href: "/legal#disclaimer" },
+      { label: "Risk Factors", href: "/legal#risk-factors" },
       { label: "FAQ",          href: "/faq" },
       { label: "About",        href: "/about" },
     ],
@@ -60,7 +58,7 @@ const footerLinks = [
 
 const socials = [
   { icon: X,             href: "https://x.com/TherealRarecoin", label: "X" },
-  { icon: MessageCircle, href: "#",                              label: "Telegram" },
+  { icon: MessageCircle, href: "https://t.me/Therealrarecoin",   label: "Telegram" },
   { icon: Mail,          href: "mailto:hello@rarecoin.io",       label: "Email" },
 ];
 
